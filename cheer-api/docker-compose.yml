@@ -1,0 +1,45 @@
+version: "3.7"
+
+x-services:
+  cheer: &cheer
+    hostname: cheer
+    env_file:
+      - ops/.env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+      - redis
+    restart: on-failure:5
+    volumes:
+      - .:/code
+      - cheer-ipython:/root/.ipython
+
+services:
+  webserver:
+    <<: *cheer
+    container_name: cheer-webserver
+    command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+
+  db:
+    image: postgres:12-alpine
+    container_name: cheer-postgres
+    environment:
+      - POSTGRES_USER=cheer
+      - POSTGRES_PASSWORD=cheer
+    volumes:
+      - cheer-data-postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis
+    container_name: cheer-redis
+    volumes:
+      - cheer-data-redis:/data
+
+volumes:
+  cheer-ipython:
+  cheer-data-postgres:
+  cheer-data-redis:
