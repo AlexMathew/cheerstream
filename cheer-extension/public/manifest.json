@@ -9,7 +9,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://hotstar.com/*"],
+      "matches": ["https://hotstar.com/*", "https://www.hotstar.com/*"],
       "js": ["js/content.js"],
       "run_at": "document_end"
     }

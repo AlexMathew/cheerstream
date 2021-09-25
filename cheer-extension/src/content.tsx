@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import ContentScript from './components/ContentScript';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+const reactRoot: HTMLDivElement = document.createElement('div');
+reactRoot.classList.add('cheerstream-root');
+document.querySelector('body')?.append(reactRoot);
+
+ReactDOM.render(<ContentScript />, reactRoot);
