@@ -27,9 +27,8 @@ const ContentScript: React.FC = () => {
       const playerBase: Node | null = getByXpath(`//div[@class="player-base"]`);
 
       if (playerBase) {
-        const url: string = document.URL;
-
-        if (url.indexOf('/live-streaming') !== -1) {
+        const liveStreamBadge = document.querySelector('.live-watermark-badge');
+        if (liveStreamBadge) {
           insertTweetSidebar(playerBase);
         }
       }
