@@ -18,7 +18,25 @@ const insertTweetSidebar = (playerBase: Node) => {
     sidebar.style.color = 'black';
 
     watchAreaInner?.appendChild(sidebar);
+    connectToWebsocket();
   }
+};
+
+const connectToWebsocket = () => {
+  const socket: WebSocket = new WebSocket('ws://localhost:8000/ws/ipl/match1/');
+  socket.onmessage = (e: MessageEvent) => {
+    const sidebar: Node | null = getByXpath(
+      `//div[@class="cheerstream-sidebar"]`,
+    );
+
+    if (sidebar) {
+      sidebar.textContent = e.data;
+    }
+  };
+
+  socket.onclose = () => {
+    console.log('Socket closed');
+  };
 };
 
 const ContentScript: React.FC = () => {
@@ -28,7 +46,7 @@ const ContentScript: React.FC = () => {
 
       if (playerBase) {
         const liveStreamBadge = document.querySelector('.live-watermark-badge');
-        if (liveStreamBadge) {
+        if (liveStreamBadge || true) {
           insertTweetSidebar(playerBase);
         }
       }

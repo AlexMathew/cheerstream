@@ -72,6 +72,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "cheer.wsgi.application"
 ASGI_APPLICATION = "cheer.asgi.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [(os.getenv("REDIS_HOST"), os.getenv("REDIS_PORT"))],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
