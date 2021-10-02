@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from django.http.request import HttpRequest
+from django.http.response import JsonResponse
+from django.views import View
 
-# Create your views here.
+
+class WebsocketView(View):
+    def get(
+        self, request: HttpRequest, event_name: str, match_name: str, *args, **kwargs
+    ):
+        return JsonResponse(
+            {"websocket": f"ws://{request.get_host()}/{event_name}/{match_name}/"}
+        )
