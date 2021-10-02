@@ -4,6 +4,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const srcDir = path.join(__dirname, 'src');
 
 module.exports = {
+  mode: process.env.NODE_ENV || 'development',
   entry: {
     options: path.join(srcDir, 'options.tsx'),
     background: path.join(srcDir, 'background.ts'),
@@ -29,6 +30,9 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: '.', to: '../', context: 'public' }],
       options: {},
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
     }),
   ],
 };

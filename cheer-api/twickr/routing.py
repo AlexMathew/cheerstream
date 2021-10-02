@@ -5,7 +5,7 @@ from . import consumers
 
 websocket_urlpatterns = [
     re_path(
-        r"ws/(?P<event_name>\w+)/(?P<match_name>\w+)/$",
+        r"ws/(?P<event_name>[\w\-]+)/(?P<match_name>[\w\-]+)/$",
         consumers.TwickrConsumer.as_asgi(),
     ),
 ]

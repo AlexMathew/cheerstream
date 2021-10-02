@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
 import { getByXpath } from '../utils/xpath';
+import { EventDetails, getEventAndMatchDetails } from '../utils/details';
+import twickr from '../api/twickr';
+import { AxiosResponse } from 'axios';
+import { WebsocketResponse } from '../api/responseTypes';
 
 MutationObserver = window.MutationObserver;
 
@@ -22,8 +26,15 @@ const insertTweetSidebar = (playerBase: Node) => {
   }
 };
 
-const connectToWebsocket = () => {
-  const socket: WebSocket = new WebSocket('ws://localhost:8000/ws/ipl/match1/');
+const connectToWebsocket = async () => {
+  const eventDetails: EventDetails = getEventAndMatchDetails(
+    document.location.pathname,
+  );
+  const wsResponse: AxiosResponse<WebsocketResponse> =
+    await twickr.get<WebsocketResponse>(
+      `/websocket/${eventDetails.eventName}/${eventDetails.matchName}/`,
+    );
+  const socket: WebSocket = new WebSocket(wsResponse.data.websocket);
   socket.onmessage = (e: MessageEvent) => {
     const sidebar: Node | null = getByXpath(
       `//div[@class="cheerstream-sidebar"]`,

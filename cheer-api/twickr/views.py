@@ -8,5 +8,5 @@ class WebsocketView(View):
         self, request: HttpRequest, event_name: str, match_name: str, *args, **kwargs
     ):
         return JsonResponse(
-            {"websocket": f"ws://{request.get_host()}/{event_name}/{match_name}/"}
+            {"websocket": f"ws://{request.get_host()}/ws/{event_name}/{match_name}/"}
         )
