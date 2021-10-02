@@ -32,7 +32,7 @@ const connectToWebsocket = async () => {
   );
   const wsResponse: AxiosResponse<WebsocketResponse> =
     await twickr.get<WebsocketResponse>(
-      `/websocket/${eventDetails.eventName}/${eventDetails.matchName}/`,
+      `/websocket/${eventDetails.sport}/${eventDetails.event}/${eventDetails.match}/`,
     );
   const socket: WebSocket = new WebSocket(wsResponse.data.websocket);
   socket.onmessage = (e: MessageEvent) => {

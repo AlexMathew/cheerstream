@@ -4,7 +4,7 @@ from .views import WebsocketView
 
 urlpatterns = [
     path(
-        "websocket/<str:event_name>/<str:match_name>/",
+        "websocket/<str:sport>/<str:event>/<str:match>/",
         WebsocketView.as_view(),
         name="websocket-view",
     )

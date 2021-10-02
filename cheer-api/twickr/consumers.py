@@ -5,9 +5,10 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 class TwickrConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        self.event_name = self.scope["url_route"]["kwargs"]["event_name"]
-        self.match_name = self.scope["url_route"]["kwargs"]["match_name"]
-        self.room_group_name = f"{self.event_name}_{self.match_name}"
+        self.sport = self.scope["url_route"]["kwargs"]["sport"]
+        self.event = self.scope["url_route"]["kwargs"]["event"]
+        self.match = self.scope["url_route"]["kwargs"]["match"]
+        self.room_group_name = f"{self.sport}_{self.event}_{self.match}"
 
         await self.channel_layer.group_add(self.room_group_name, self.channel_name)
 

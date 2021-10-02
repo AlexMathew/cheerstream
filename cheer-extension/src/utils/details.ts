@@ -1,14 +1,25 @@
-export type EventDetails = {
-  eventName: string;
-  matchName: string;
+type ExpectedMatchGroups = 'sport' | 'event' | 'match';
+
+type RegexpMatchGroups = {
+  [key in ExpectedMatchGroups]?: string;
 };
 
+export type EventDetails = {
+  sport: string;
+  event: string;
+  match: string;
+};
+
+const LIVE_STREAM_URL_REGEX: RegExp =
+  /in\/sports\/(?<sport>\w+)\/?(?<event>indian-premier-league)?\/(?<match>[\w-]+)(\/live-streaming)?\/\d+/i;
+
 export function getEventAndMatchDetails(path: string): EventDetails {
-  const parts = path.split('/');
-  const [eventName, matchName] = parts.slice(4, 6);
+  const match: RegExpExecArray | null = LIVE_STREAM_URL_REGEX.exec(path);
+  const groups: RegexpMatchGroups | undefined = match?.groups ?? {};
 
   return {
-    eventName: eventName,
-    matchName: matchName,
+    sport: groups?.sport ?? 'default',
+    event: groups?.event ?? 'default',
+    match: groups?.match ?? 'default',
   };
 }
