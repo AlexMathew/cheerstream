@@ -1,3 +1,5 @@
+from itertools import chain
+
 from .constants import EPLTeams, Events, IPLTeams, Sports
 
 BY_SPORT = {
@@ -64,3 +66,14 @@ ACCOUNT_TO_GROUP_MAPPING = {
     **create_reverse_mapping(BY_EVENT),
     **create_reverse_mapping(BY_TEAM),
 }
+
+
+def get_all_accounts(mapping):
+    return list(chain(*[accounts for accounts in mapping.values()]))
+
+
+ALL_ACCOUNTS = [
+    *get_all_accounts(BY_SPORT),
+    *get_all_accounts(BY_EVENT),
+    *get_all_accounts(BY_TEAM),
+]
