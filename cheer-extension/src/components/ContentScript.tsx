@@ -4,6 +4,7 @@ import { EventDetails, getEventAndMatchDetails } from '../utils/details';
 import twickr from '../api/twickr';
 import { AxiosResponse } from 'axios';
 import { WebsocketResponse } from '../api/responseTypes';
+import { EVENTS, SPORTS } from '../constants';
 
 MutationObserver = window.MutationObserver;
 
@@ -49,6 +50,16 @@ const connectToWebsocket = async () => {
   };
 };
 
+const shouldInsertSidebarForEvent = (): boolean => {
+  const eventDetails: EventDetails = getEventAndMatchDetails(
+    document.location.pathname,
+  );
+
+  return (
+    eventDetails.sport === SPORTS.FOOTBALL || eventDetails.event === EVENTS.IPL
+  );
+};
+
 const ContentScript: React.FC = () => {
   useEffect(() => {
     var observer = new MutationObserver(() => {
@@ -56,7 +67,7 @@ const ContentScript: React.FC = () => {
 
       if (playerBase) {
         const liveStreamBadge = document.querySelector('.live-watermark-badge');
-        if (liveStreamBadge || true) {
+        if (liveStreamBadge && shouldInsertSidebarForEvent()) {
           insertTweetSidebar(playerBase);
         }
       }
