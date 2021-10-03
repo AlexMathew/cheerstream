@@ -15,7 +15,6 @@ const insertTweetSidebar = (playerBase: Node) => {
     const watchAreaInner: HTMLElement | null = playerBase.parentElement;
     watchAreaInner ? (watchAreaInner.style.display = 'flex') : null;
     const sidebar = document.createElement('div');
-    sidebar.innerText = 'Twitter';
     sidebar.classList.add('cheerstream-sidebar');
     sidebar.style.width = '20%';
     sidebar.style.background = 'white';
@@ -41,7 +40,7 @@ const connectToWebsocket = async () => {
     );
 
     if (sidebar) {
-      sidebar.textContent = e.data;
+      sidebar.textContent += `TWEET: ${e.data}`;
     }
   };
 

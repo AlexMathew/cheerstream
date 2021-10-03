@@ -1,15 +1,19 @@
 import json
 import os
-from typing import Dict, List
+from typing import Any, Dict, List
 
 import requests
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 
-from .twitter_accounts import ALL_ACCOUNTS
+from .twitter_accounts import ACCOUNT_TO_GROUP_MAPPING, ALL_ACCOUNTS
 
 TWITTER_BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN")
 
 STREAM_RULE_MAX_LENGTH = 512
 STREAM_RULE_CONNECTOR_LENGTH = len(" OR from:")
+
+CHANNEL_LAYER = get_channel_layer()
 
 
 def build_rules(accounts: List[str]) -> List[Dict[str, str]]:
@@ -79,7 +83,25 @@ def get_stream():
     for line in resp.iter_lines():
         if line:
             tweet = json.loads(line)
-            print(json.dumps(tweet, indent=4, sort_keys=True))
+            process_tweet(tweet)
+
+
+def process_tweet(tweet: Dict[str, Any]):
+    tweet_id = tweet.get("data", {}).get("id")
+    if not tweet_id:
+        return
+
+    author_id = tweet.get("data", {}).get("author_id", "")
+    users = tweet.get("includes", {}).get("users", [])
+    author = list(filter(lambda user: user.get("id") == author_id, users))
+    if author:
+        author = author[0]
+        group = ACCOUNT_TO_GROUP_MAPPING.get(author.get("username", ""))
+        if group:
+            print(group, tweet_id)
+            async_to_sync(CHANNEL_LAYER.group_send)(
+                group, {"type": "event_message", "message": tweet_id}
+            )
 
 
 def run_stream():
