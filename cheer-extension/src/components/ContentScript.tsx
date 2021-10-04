@@ -1,53 +1,28 @@
 import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { getByXpath } from '../utils/xpath';
 import { EventDetails, getEventAndMatchDetails } from '../utils/details';
-import twickr from '../api/twickr';
-import { AxiosResponse } from 'axios';
-import { WebsocketResponse } from '../api/responseTypes';
 import { EVENTS, SPORTS } from '../constants';
+import TwitterSidebar from './TwitterSidebar';
 
 MutationObserver = window.MutationObserver;
 
 const insertTweetSidebar = (playerBase: Node) => {
   const existingSidebar: Node | null = getByXpath(
-    `//div[@class="cheerstream-sidebar"]`,
+    `//div[@class="twickr-sidebar-holder"]`,
   );
   if (!existingSidebar) {
     const watchAreaInner: HTMLElement | null = playerBase.parentElement;
     watchAreaInner ? (watchAreaInner.style.display = 'flex') : null;
     const sidebar = document.createElement('div');
-    sidebar.classList.add('cheerstream-sidebar');
+    sidebar.classList.add('twickr-sidebar-holder');
     sidebar.style.width = '20%';
     sidebar.style.background = 'white';
     sidebar.style.color = 'black';
 
     watchAreaInner?.appendChild(sidebar);
-    connectToWebsocket();
+    ReactDOM.render(<TwitterSidebar />, sidebar);
   }
-};
-
-const connectToWebsocket = async () => {
-  const eventDetails: EventDetails = getEventAndMatchDetails(
-    document.location.pathname,
-  );
-  const wsResponse: AxiosResponse<WebsocketResponse> =
-    await twickr.get<WebsocketResponse>(
-      `/websocket/${eventDetails.sport}/${eventDetails.event}/${eventDetails.match}/`,
-    );
-  const socket: WebSocket = new WebSocket(wsResponse.data.websocket);
-  socket.onmessage = (e: MessageEvent) => {
-    const sidebar: Node | null = getByXpath(
-      `//div[@class="cheerstream-sidebar"]`,
-    );
-
-    if (sidebar) {
-      sidebar.textContent += `TWEET: ${e.data}`;
-    }
-  };
-
-  socket.onclose = () => {
-    console.log('Socket closed');
-  };
 };
 
 const shouldInsertSidebarForEvent = (): boolean => {
