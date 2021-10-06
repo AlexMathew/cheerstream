@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getByXpath } from '../utils/xpath';
 import { EventDetails, getEventAndMatchDetails } from '../utils/details';
 import twickr from '../api/twickr';
 import { AxiosResponse } from 'axios';
 import { WebsocketResponse } from '../api/responseTypes';
+import { WebsocketEvent } from '../utils/websocket';
 
 interface TwitterSidebarProps {}
 
-const connectToWebsocket = async () => {
+async function getWebsocket() {
   const eventDetails: EventDetails = getEventAndMatchDetails(
     document.location.pathname,
   );
@@ -16,21 +17,25 @@ const connectToWebsocket = async () => {
       `/websocket/${eventDetails.sport}/${eventDetails.event}/${eventDetails.match}/`,
     );
   const socket: WebSocket = new WebSocket(wsResponse.data.websocket);
-  socket.onmessage = (e: MessageEvent) => {
-    const sidebar: Node | null = getByXpath(`//div[@class="twickr-sidebar"]`);
-
-    if (sidebar) {
-      sidebar.textContent += `TWEET: ${e.data}`;
-    }
-  };
-
-  socket.onclose = () => {
-    console.log('Socket closed');
-  };
-};
+  return socket;
+}
 
 const TwitterSidebar: React.FC<TwitterSidebarProps> = ({}) => {
+  const [tweets, setTweets] = useState<Array<string>>([]);
+
   useEffect(() => {
+    const connectToWebsocket = async () => {
+      const socket = await getWebsocket();
+      socket.onmessage = (e: MessageEvent<WebsocketEvent>) => {
+        const tweetsCopy = [e.data.message, ...tweets];
+        setTweets(tweetsCopy);
+      };
+
+      socket.onclose = () => {
+        console.log('Socket closed');
+      };
+    };
+
     connectToWebsocket();
   }, []);
 

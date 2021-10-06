@@ -42,7 +42,7 @@ const ContentScript: React.FC = () => {
 
       if (playerBase) {
         const liveStreamBadge = document.querySelector('.live-watermark-badge');
-        if (liveStreamBadge && shouldInsertSidebarForEvent()) {
+        if ((liveStreamBadge && shouldInsertSidebarForEvent()) || true) {
           insertTweetSidebar(playerBase);
         }
       }
