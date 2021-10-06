@@ -59,9 +59,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({}) => {
       style={{ height: 'inherit', overflowY: 'scroll' }}
     >
       {tweets.map((tweet) => (
-        <div className={`twickr-sidebar-${tweet}`} key={tweet}>
-          {tweet}
-        </div>
+        <div className={`twickr-sidebar-${tweet}`} key={tweet}></div>
       ))}
     </div>
   );
