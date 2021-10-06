@@ -9,6 +9,7 @@ module.exports = {
     options: path.join(srcDir, 'options.tsx'),
     background: path.join(srcDir, 'background.ts'),
     content: path.join(srcDir, 'content.tsx'),
+    twitter_embed: path.join(srcDir, 'twitter_embed.ts'),
   },
   output: {
     path: path.join(__dirname, 'dist/js'),

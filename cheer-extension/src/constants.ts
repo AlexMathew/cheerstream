@@ -1,3 +1,7 @@
+export const DOMCustomEventType = {
+  TWITTER_EMBED: 'twickr_twitter_embed',
+};
+
 export const SPORTS = {
   CRICKET: 'cricket',
   FOOTBALL: 'football',

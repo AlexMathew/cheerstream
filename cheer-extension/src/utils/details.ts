@@ -18,8 +18,8 @@ export function getEventAndMatchDetails(path: string): EventDetails {
   const groups: RegexpMatchGroups | undefined = match?.groups ?? {};
 
   return {
-    sport: groups?.sport ?? 'default',
-    event: groups?.event ?? 'default',
+    sport: groups?.sport ?? 'cricket',
+    event: groups?.event ?? 'indian-premier-league',
     match: groups?.match ?? 'default',
   };
 }

@@ -19,6 +19,7 @@ const insertTweetSidebar = (playerBase: Node) => {
     sidebar.style.width = '20%';
     sidebar.style.background = 'white';
     sidebar.style.color = 'black';
+    sidebar.style.height = `${watchAreaInner?.offsetHeight}px` ?? 'auto';
 
     watchAreaInner?.appendChild(sidebar);
     ReactDOM.render(<TwitterSidebar />, sidebar);

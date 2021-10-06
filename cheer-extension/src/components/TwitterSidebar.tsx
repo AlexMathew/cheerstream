@@ -4,6 +4,8 @@ import twickr from '../api/twickr';
 import { AxiosResponse } from 'axios';
 import { WebsocketResponse } from '../api/responseTypes';
 import { WebsocketEvent } from '../utils/websocket';
+import { DOMCustomEventType } from '../constants';
+import { TwitterEmbedEvent } from '../types';
 
 interface TwitterSidebarProps {}
 
@@ -19,15 +21,20 @@ async function getWebsocket() {
   return socket;
 }
 
+async function embedTweet(tweetId: string) {
+  const embedEvent: TwitterEmbedEvent = {
+    tweetId,
+    className: `twickr-sidebar-${tweetId}`,
+  };
+  document.dispatchEvent(
+    new CustomEvent<TwitterEmbedEvent>(DOMCustomEventType.TWITTER_EMBED, {
+      detail: embedEvent,
+    }),
+  );
+}
+
 const TwitterSidebar: React.FC<TwitterSidebarProps> = ({}) => {
-  const TEMPORARY_TWEETS_FOR_TESTING = [
-    '1445453394886283276',
-    '1445456251748503553',
-    '1445448408412475400',
-  ];
-  const [tweets, setTweets] = useState<string[]>([
-    ...TEMPORARY_TWEETS_FOR_TESTING,
-  ]);
+  const [tweets, setTweets] = useState<string[]>([]);
 
   useEffect(() => {
     const connectToWebsocket = async () => {
@@ -35,6 +42,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({}) => {
       socket.onmessage = (e: MessageEvent<string>) => {
         const data: WebsocketEvent = JSON.parse(e.data);
         setTweets((tweets) => [data.message, ...tweets]);
+        embedTweet(data.message);
       };
 
       socket.onclose = () => {
@@ -46,9 +54,14 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({}) => {
   }, []);
 
   return (
-    <div className="twickr-sidebar">
-      {tweets.map((tweet, idx) => (
-        <div key={idx}>{tweet}</div>
+    <div
+      className="twickr-sidebar"
+      style={{ height: 'inherit', overflowY: 'scroll' }}
+    >
+      {tweets.map((tweet) => (
+        <div className={`twickr-sidebar-${tweet}`} key={tweet}>
+          {tweet}
+        </div>
       ))}
     </div>
   );
