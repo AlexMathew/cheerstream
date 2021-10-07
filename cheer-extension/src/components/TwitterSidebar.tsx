@@ -33,6 +33,12 @@ async function embedTweet(tweetId: string) {
   );
 }
 
+function getSidebarWidth() {
+  const sidebarHolder: HTMLDivElement | null =
+    document.querySelector<HTMLDivElement>('.twickr-sidebar-holder');
+  return `${sidebarHolder?.offsetWidth}px` ?? 'inherit';
+}
+
 const TwitterSidebar: React.FC<TwitterSidebarProps> = ({}) => {
   const [tweets, setTweets] = useState<string[]>([]);
 
@@ -53,15 +59,33 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({}) => {
     connectToWebsocket();
   }, []);
 
+  const poweredByWidth = getSidebarWidth();
+
   return (
-    <div
-      className="twickr-sidebar"
-      style={{ height: 'inherit', overflowY: 'scroll' }}
-    >
-      {tweets.map((tweet) => (
-        <div className={`twickr-sidebar-${tweet}`} key={tweet}></div>
-      ))}
-    </div>
+    <>
+      <div
+        className="twickr-sidebar"
+        style={{ height: 'inherit', overflowY: 'scroll' }}
+      >
+        {tweets.map((tweet) => (
+          <div className={`twickr-sidebar-${tweet}`} key={tweet}></div>
+        ))}
+      </div>
+      <div
+        className="twickr-sidebar-powered-by"
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          height: '20px',
+          width: poweredByWidth,
+          fontWeight: 'bold',
+          background: 'whitesmoke',
+          boxShadow: '0 -8px 10px -6px black',
+        }}
+      >
+        Powered by Twickr
+      </div>
+    </>
   );
 };
 
