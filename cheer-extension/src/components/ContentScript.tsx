@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { getByXpath } from '../utils/xpath';
 import { EventDetails, getEventAndMatchDetails } from '../utils/details';
@@ -48,10 +48,14 @@ const ContentScript: React.FC = () => {
         }
       }
     });
-    observer.observe(document, {
-      childList: true,
-      subtree: true,
-    });
+    setTimeout(
+      () =>
+        observer.observe(document, {
+          childList: true,
+          subtree: true,
+        }),
+      2 * 1000,
+    );
   }, []);
 
   return <></>;
