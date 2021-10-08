@@ -25,12 +25,16 @@ document.addEventListener(
   function (e: CustomEvent<TwitterEmbedEvent>) {
     const embedDetails = e.detail;
 
-    window.twttr.widgets.createTweet(
-      embedDetails.tweetId,
-      document.getElementsByClassName(embedDetails.className)[0],
-      {
-        align: 'center',
-      },
+    setTimeout(
+      () =>
+        window.twttr.widgets.createTweet(
+          embedDetails.tweetId,
+          document.getElementsByClassName(embedDetails.className)[0],
+          {
+            align: 'center',
+          },
+        ),
+      30,
     );
   },
 );
