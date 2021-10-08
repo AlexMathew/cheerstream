@@ -3,12 +3,14 @@ from itertools import chain
 from .constants import EPLTeams, Events, IPLTeams, Sports
 
 BY_SPORT = {
-    Sports.CRICKET.value: ["ESPNcricinfo", "cricbuzz"],
+    Sports.CRICKET.value: ["ESPNcricinfo", "cricbuzz", "cricketaakash", "bhogleharsha"],
     Sports.FOOTBALL.value: [
         "premierleague",
         "OfficialFPL",
         "SkySportsPL",
         "SkySportsStatto",
+        "OptaJoe",
+        "FFScout",
     ],
 }
 
@@ -33,14 +35,14 @@ BY_EPL_TEAM = {
     EPLTeams.BRE.value: ["BrentfordFC"],
     EPLTeams.BHA.value: ["OfficialBHAFC"],
     EPLTeams.BUR.value: ["BurnleyOfficial"],
-    EPLTeams.CHE.value: ["ChelseaFC"],
+    EPLTeams.CHE.value: ["ChelseaFC", "AlexGoldberg_"],
     EPLTeams.CRY.value: ["CPFC"],
     EPLTeams.EVE.value: ["Everton"],
     EPLTeams.LEE.value: ["LUFC"],
     EPLTeams.LEI.value: ["LCFC"],
     EPLTeams.LIV.value: ["LFC"],
     EPLTeams.MCI.value: ["ManCity"],
-    EPLTeams.MUN.value: ["ManUtd"],
+    EPLTeams.MUN.value: ["ManUtd", "UnitedPeoplesTV", "utdreport", "sistoney67"],
     EPLTeams.NEW.value: ["NUFC"],
     EPLTeams.NOR.value: ["NorwichCityFC"],
     EPLTeams.SOU.value: ["SouthamptonFC"],
