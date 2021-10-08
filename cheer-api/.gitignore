@@ -137,6 +137,7 @@ dmypy.json
 .pytype/
 
 zappa_settings.json
+*.zip
 
 test.png
 
