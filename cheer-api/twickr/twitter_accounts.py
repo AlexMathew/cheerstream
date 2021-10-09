@@ -11,6 +11,7 @@ BY_SPORT = {
         "SkySportsStatto",
         "OptaJoe",
         "FFScout",
+        "TrollFootball",
     ],
 }
 
@@ -30,7 +31,7 @@ BY_IPL_TEAM = {
 }
 
 BY_EPL_TEAM = {
-    EPLTeams.ARS.value: ["Arsenal"],
+    EPLTeams.ARS.value: ["Arsenal", "charles_watts"],
     EPLTeams.AVL.value: ["AVFCOfficial"],
     EPLTeams.BRE.value: ["BrentfordFC"],
     EPLTeams.BHA.value: ["OfficialBHAFC"],
@@ -40,9 +41,17 @@ BY_EPL_TEAM = {
     EPLTeams.EVE.value: ["Everton"],
     EPLTeams.LEE.value: ["LUFC"],
     EPLTeams.LEI.value: ["LCFC"],
-    EPLTeams.LIV.value: ["LFC"],
+    EPLTeams.LIV.value: ["LFC", "jamespearcelfc"],
     EPLTeams.MCI.value: ["ManCity"],
-    EPLTeams.MUN.value: ["ManUtd", "UnitedPeoplesTV", "utdreport", "sistoney67"],
+    EPLTeams.MUN.value: [
+        "ManUtd",
+        "UnitedPeoplesTV",
+        "utdreport",
+        "sistoney67",
+        "markgoldbridge",
+        "UnitedStandMUFC",
+        "samuelluckhurst",
+    ],
     EPLTeams.NEW.value: ["NUFC"],
     EPLTeams.NOR.value: ["NorwichCityFC"],
     EPLTeams.SOU.value: ["SouthamptonFC"],
