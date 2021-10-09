@@ -1,9 +1,11 @@
+from datetime import datetime
+
 import redis
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from helpers.instances import redis as redis_instance
 
-from .constants import COUNT_FOR_EVENT_KEY, MAX_FOR_EVENT_KEY
+from .constants import COUNT_FOR_EVENT_KEY, EVENT_KEY, MAX_FOR_EVENT_KEY
 from .consumers import TrackrConsumer
 
 CHANNEL_LAYER = get_channel_layer()
@@ -20,11 +22,14 @@ def websocket_send(event: str, count_update: int):
 
 
 def log_connect(event: str):
+    event_key = EVENT_KEY(event)
     count_key = COUNT_FOR_EVENT_KEY(event)
     max_key = MAX_FOR_EVENT_KEY(event)
     pipeline: redis.client.Pipeline = redis_instance.r.pipeline()
     pipeline.watch(count_key)
     pipeline.watch(max_key)
+    if not redis_instance.exists(event_key):
+        redis_instance.set(event_key, datetime.now().strftime("%A, %Y %b %d, %H:%M:%S"))
     current_count = int(pipeline.get(count_key) or 0)
     current_max = int(pipeline.get(max_key) or 0)
     pipeline.multi()
