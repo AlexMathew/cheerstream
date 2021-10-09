@@ -12,6 +12,7 @@ import os
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
+from trackr import routing as trackr_routing
 from twickr import routing as twickr_routing
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cheer.settings")
@@ -20,7 +21,10 @@ application = ProtocolTypeRouter(
     {
         "http": get_asgi_application(),
         "websocket": AuthMiddlewareStack(
-            URLRouter(twickr_routing.websocket_urlpatterns)
+            URLRouter(
+                twickr_routing.websocket_urlpatterns
+                + trackr_routing.websocket_urlpatterns,
+            )
         ),
     }
 )
