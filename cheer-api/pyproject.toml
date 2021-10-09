@@ -12,6 +12,7 @@ channels = "^3.0.4"
 channels_redis = "^3.3.0"
 django-cors-headers = "^3.9.0"
 psycopg2-binary = "2.8.6"
+redis = "^3.5.3"
 
 [tool.poetry.dev-dependencies]
 ipython = "^7.28.0"
