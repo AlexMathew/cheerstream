@@ -6,5 +6,6 @@ export interface Event {
 }
 
 export interface StatsResponse {
+  realtime: string;
   events: Event[];
 }

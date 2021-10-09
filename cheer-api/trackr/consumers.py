@@ -18,9 +18,9 @@ class TrackrConsumer(AsyncWebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json["message"]
 
-        await self.channel_layer.group_send(
-            self.GROUP_NAME, {"type": "event_message", "message": message}
-        )
+        # await self.channel_layer.group_send(
+        #     self.GROUP_NAME, {"type": "event_message", "message": message}
+        # )
 
     async def event_message(self, event):
         message = event["message"]

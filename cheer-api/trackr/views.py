@@ -10,6 +10,7 @@ class RealtimeStatsView(View):
     def get(self, request: HttpRequest, *args, **kwargs):
         return JsonResponse(
             {
+                "realtime": f"ws://{request.get_host()}/ws/trackr/realtime/",
                 "events": [
                     {
                         "event": event.decode().split(TRACKR_PREFIX)[-1],
@@ -18,6 +19,6 @@ class RealtimeStatsView(View):
                         "max": int(redis.get(f"max_{event.decode()}") or 0),
                     }
                     for event in redis.r.keys(pattern=f"{TRACKR_PREFIX}*")
-                ]
+                ],
             }
         )

@@ -1,6 +1,7 @@
 import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
+from trackr.consumers import TrackrConsumer
 from trackr.utils import log_connect, log_disconnect
 
 from .constants import DEFAULT_VALUE
@@ -30,11 +31,25 @@ class TwickrConsumer(AsyncWebsocketConsumer):
 
         await self.accept()
         log_connect(self.event_name_for_log)
+        await self.channel_layer.group_send(
+            TrackrConsumer.GROUP_NAME,
+            {
+                "type": "event_message",
+                "message": {"event": self.event_name_for_log, "count_update": +1},
+            },
+        )
 
     async def disconnect(self, close_code):
         for group in self.group_names:
             await self.channel_layer.group_discard(group, self.channel_name)
         log_disconnect(self.event_name_for_log)
+        await self.channel_layer.group_send(
+            TrackrConsumer.GROUP_NAME,
+            {
+                "type": "event_message",
+                "message": {"event": self.event_name_for_log, "count_update": -1},
+            },
+        )
 
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)

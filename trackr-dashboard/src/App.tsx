@@ -5,6 +5,7 @@ import trackr from './api/trackr';
 import { Header } from './Header';
 import { EventTable } from './EventTable';
 import * as _ from 'lodash';
+import { WebsocketEvent } from './api/websocket';
 
 interface EventMap {
   [key: string]: Event;
@@ -20,6 +21,15 @@ const App: React.FC = () => {
 
       const eventMap = _.keyBy(response.data.events, 'event');
       setEvents(eventMap);
+
+      const socket = new WebSocket(response.data.realtime);
+      socket.onmessage = (e: MessageEvent<WebsocketEvent>) => {
+        console.log(e);
+      };
+
+      socket.onclose = () => {
+        console.log('Socket closed');
+      };
     };
 
     loadEvents();
