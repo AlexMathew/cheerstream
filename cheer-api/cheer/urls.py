@@ -21,5 +21,6 @@ from django.urls.conf import include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("health/", lambda request: HttpResponse("<html><body>Ping.</body></html>")),
-    path("api/v1/", include("twickr.urls")),
+    path("twickr/api/v1/", include("twickr.urls")),
+    path("trackr/api/v1/", include("trackr.urls")),
 ]

@@ -9,7 +9,7 @@ if (process.env.REACT_APP_ENV_OVERRIDE === 'docker') {
 }
 
 export default axios.create({
-  baseURL: `${BASE_URL}/api/v1`,
+  baseURL: `${BASE_URL}/twickr/api/v1`,
   headers: {
     'Content-Type': 'application/json',
   },

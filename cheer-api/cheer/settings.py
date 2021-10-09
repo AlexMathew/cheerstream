@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "channels",
     "twickr",
+    "trackr",
 ]
 
 MIDDLEWARE = [
