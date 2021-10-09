@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Event, StatsResponse } from './api/responseTypes';
 import trackr from './api/trackr';
 import { Header } from './Header';
@@ -13,6 +13,26 @@ interface EventMap {
 
 const App: React.FC = () => {
   const [events, setEvents] = useState<EventMap>({});
+  const eventsRef = useRef(events);
+  eventsRef.current = events;
+
+  const setupRealtime = (wsUrl: string) => {
+    const socket = new WebSocket(wsUrl);
+    socket.onmessage = (e: MessageEvent<string>) => {
+      const data: WebsocketEvent = JSON.parse(e.data);
+      const updatedEvent: Event = eventsRef.current?.[data.message.event];
+      if (updatedEvent) {
+        updatedEvent.count += data.message.count_update;
+        if (updatedEvent.count > updatedEvent.max) {
+          updatedEvent.max = updatedEvent.count;
+        }
+        setEvents({ ...events, [data.message.event]: updatedEvent });
+      }
+    };
+    socket.onclose = () => {
+      console.log('Socket closed');
+    };
+  };
 
   useEffect(() => {
     const loadEvents = async () => {
@@ -21,15 +41,8 @@ const App: React.FC = () => {
 
       const eventMap = _.keyBy(response.data.events, 'event');
       setEvents(eventMap);
-
-      const socket = new WebSocket(response.data.realtime);
-      socket.onmessage = (e: MessageEvent<WebsocketEvent>) => {
-        console.log(e);
-      };
-
-      socket.onclose = () => {
-        console.log('Socket closed');
-      };
+      eventsRef.current = eventMap;
+      setupRealtime(response.data.realtime);
     };
 
     loadEvents();
