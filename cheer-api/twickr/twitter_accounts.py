@@ -3,7 +3,13 @@ from itertools import chain
 from .constants import EPLTeams, Events, IPLTeams, Sports
 
 BY_SPORT = {
-    Sports.CRICKET.value: ["ESPNcricinfo", "cricbuzz", "cricketaakash", "bhogleharsha"],
+    Sports.CRICKET.value: [
+        "ESPNcricinfo",
+        "cricbuzz",
+        "cricketaakash",
+        "bhogleharsha",
+        "WasimJaffer14",
+    ],
     Sports.FOOTBALL.value: [
         "premierleague",
         "OfficialFPL",
@@ -12,6 +18,13 @@ BY_SPORT = {
         "OptaJoe",
         "FFScout",
         "TrollFootball",
+        "footballltrolls",
+        "footyhumour",
+        "OptaJoke",
+        "BoringMilner",
+        "Squawka",
+        "SquawkaNews",
+        "StatmanDave",
     ],
 }
 
@@ -36,12 +49,18 @@ BY_EPL_TEAM = {
     EPLTeams.BRE.value: ["BrentfordFC"],
     EPLTeams.BHA.value: ["OfficialBHAFC"],
     EPLTeams.BUR.value: ["BurnleyOfficial"],
-    EPLTeams.CHE.value: ["ChelseaFC", "AlexGoldberg_"],
+    EPLTeams.CHE.value: [
+        "ChelseaFC",
+        "AlexGoldberg_",
+        "SJohnsonSport",
+        "NizaarKinsella",
+        "CFCDaily",
+    ],
     EPLTeams.CRY.value: ["CPFC"],
     EPLTeams.EVE.value: ["Everton"],
     EPLTeams.LEE.value: ["LUFC"],
     EPLTeams.LEI.value: ["LCFC"],
-    EPLTeams.LIV.value: ["LFC", "jamespearcelfc"],
+    EPLTeams.LIV.value: ["LFC", "jamespearcelfc", "_lfcleanne"],
     EPLTeams.MCI.value: ["ManCity"],
     EPLTeams.MUN.value: [
         "ManUtd",
@@ -51,11 +70,15 @@ BY_EPL_TEAM = {
         "markgoldbridge",
         "UnitedStandMUFC",
         "samuelluckhurst",
+        "AndyMitten",
+        "lauriewhitwell",
+        "StrettyNews",
+        "maramperninety",
     ],
     EPLTeams.NEW.value: ["NUFC"],
     EPLTeams.NOR.value: ["NorwichCityFC"],
     EPLTeams.SOU.value: ["SouthamptonFC"],
-    EPLTeams.TOT.value: ["SpursOfficial"],
+    EPLTeams.TOT.value: ["SpursOfficial", "dan_kp"],
     EPLTeams.WAT.value: ["WatfordFC"],
     EPLTeams.WHU.value: ["WestHam"],
     EPLTeams.WOL.value: ["Wolves"],
