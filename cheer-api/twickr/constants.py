@@ -6,6 +6,7 @@ DEFAULT_VALUE = "default"
 class Sports(Enum):
     CRICKET = "cricket"
     FOOTBALL = "football"
+    F1 = "formula1"
 
 
 class Events(Enum):
@@ -44,3 +45,7 @@ class EPLTeams(Enum):
     WAT = "watford"
     WHU = "west-ham"
     WOL = "wolves"
+
+
+class F1Teams(Enum):
+    pass

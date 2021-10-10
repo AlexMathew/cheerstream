@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { getByXpath } from '../utils/xpath';
 import { EventDetails, getEventAndMatchDetails } from '../utils/details';
-import { EVENTS, SPORTS } from '../constants';
+import { SUPPORTED_EVENTS, SUPPORTED_SPORTS } from '../constants';
 import TwitterSidebar from './TwitterSidebar';
 
 MutationObserver = window.MutationObserver;
@@ -32,7 +32,8 @@ const shouldInsertSidebarForEvent = (): boolean => {
   );
 
   return (
-    eventDetails.sport === SPORTS.FOOTBALL || eventDetails.event === EVENTS.IPL
+    SUPPORTED_SPORTS.includes(eventDetails.sport) ||
+    SUPPORTED_EVENTS.includes(eventDetails.event)
   );
 };
 
@@ -43,7 +44,7 @@ const ContentScript: React.FC = () => {
 
       if (playerBase) {
         const liveStreamBadge = document.querySelector('.live-watermark-badge');
-        if ((liveStreamBadge && shouldInsertSidebarForEvent()) || true) {
+        if (liveStreamBadge && shouldInsertSidebarForEvent()) {
           insertTweetSidebar(playerBase);
         }
       }

@@ -49,6 +49,11 @@ class FootballTwitter(BaseSportTwitter):
     TEAMS_REGEX = r"(?P<team1>[a-zA-Z-]+)-vs-(?P<team2>[a-zA-Z-]+)"
 
 
+class F1Twitter(BaseSportTwitter):
+    def get_teams_from_match(self, match: str) -> Dict[str, str]:
+        return {}
+
+
 def create_cricket(sport: str, event: Optional[str] = None, **kwargs) -> CricketTwitter:
     return CricketTwitter(sport, event=event, **kwargs)
 
@@ -57,6 +62,11 @@ def create_football(sport: str, **kwargs) -> FootballTwitter:
     return FootballTwitter(sport, **kwargs)
 
 
+def create_f1(sport: str, **kwargs) -> F1Twitter:
+    return F1Twitter(sport, **kwargs)
+
+
 services = TwitterSportClass()
 services.register_builder(Sports.CRICKET.value, create_cricket)
 services.register_builder(Sports.FOOTBALL.value, create_football)
+services.register_builder(Sports.F1.value, create_f1)
