@@ -48,4 +48,13 @@ class EPLTeams(Enum):
 
 
 class F1Teams(Enum):
-    pass
+    ALFA_ROMEO = "alfa_romeo"
+    ALPHATAURI = "alphatauri"
+    ALPINE = "alpine"
+    ASTON_MARTIN = "aston_martin"
+    FERRARI = "ferrari"
+    HAAS = "haas"
+    MCLAREN = "mclaren"
+    MERCEDES = "mercedes"
+    RED_BULL = "red_bull"
+    WILLIAMS = "williams"

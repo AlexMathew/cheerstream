@@ -1,7 +1,7 @@
 import re
 from typing import Dict, Optional
 
-from .constants import Sports
+from .constants import F1Teams, Sports
 
 
 class BaseSportTwitter:
@@ -51,7 +51,7 @@ class FootballTwitter(BaseSportTwitter):
 
 class F1Twitter(BaseSportTwitter):
     def get_teams_from_match(self, match: str) -> Dict[str, str]:
-        return {}
+        return {team: team.value for team in list(F1Teams)}
 
 
 def create_cricket(sport: str, event: Optional[str] = None, **kwargs) -> CricketTwitter:

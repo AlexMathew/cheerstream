@@ -1,6 +1,6 @@
 from itertools import chain
 
-from .constants import EPLTeams, Events, IPLTeams, Sports
+from .constants import EPLTeams, Events, F1Teams, IPLTeams, Sports
 
 BY_SPORT = {
     Sports.CRICKET.value: [
@@ -26,6 +26,7 @@ BY_SPORT = {
         "SquawkaNews",
         "StatmanDave",
     ],
+    Sports.F1.value: ["F1", "SkySportsF1"],
 }
 
 BY_EVENT = {
@@ -84,7 +85,20 @@ BY_EPL_TEAM = {
     EPLTeams.WOL.value: ["Wolves"],
 }
 
-BY_TEAM = {**BY_IPL_TEAM, **BY_EPL_TEAM}
+BY_F1_TEAM = {
+    F1Teams.ALFA_ROMEO.value: ["alfaromeoracing"],
+    F1Teams.ALPHATAURI.value: ["AlphaTauriF1"],
+    F1Teams.ALPINE.value: ["AlpineF1Team"],
+    F1Teams.ASTON_MARTIN.value: ["AstonMartinF1"],
+    F1Teams.FERRARI.value: ["ScuderiaFerrari"],
+    F1Teams.HAAS.value: ["HaasF1Team"],
+    F1Teams.MCLAREN.value: ["McLarenF1"],
+    F1Teams.MERCEDES.value: ["MercedesAMGF1"],
+    F1Teams.RED_BULL.value: ["redbullracing"],
+    F1Teams.WILLIAMS.value: ["WilliamsRacing"],
+}
+
+BY_TEAM = {**BY_IPL_TEAM, **BY_EPL_TEAM, **BY_F1_TEAM}
 
 
 def create_reverse_mapping(mapping):
