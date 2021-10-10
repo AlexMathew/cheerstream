@@ -17,7 +17,7 @@ const insertTweetSidebar = (playerBase: Node) => {
     const sidebar = document.createElement('div');
     sidebar.classList.add('twickr-sidebar-holder');
     sidebar.style.width = '20%';
-    sidebar.style.background = 'white';
+    sidebar.style.background = 'transparent';
     sidebar.style.color = 'black';
     sidebar.style.height = `${watchAreaInner?.offsetHeight}px` ?? 'auto';
 
