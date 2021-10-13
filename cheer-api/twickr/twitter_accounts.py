@@ -6,9 +6,12 @@ BY_SPORT = {
     Sports.CRICKET.value: [
         "ESPNcricinfo",
         "cricbuzz",
+        "StarSportsIndia",
         "cricketaakash",
         "bhogleharsha",
         "WasimJaffer14",
+        "cricketwallah",
+        "toisports",
     ],
     Sports.FOOTBALL.value: [
         "premierleague",
@@ -25,6 +28,8 @@ BY_SPORT = {
         "Squawka",
         "SquawkaNews",
         "StatmanDave",
+        "EBL2017",
+        "henrywinter",
     ],
     Sports.F1.value: ["F1", "SkySportsF1"],
 }
@@ -45,7 +50,7 @@ BY_IPL_TEAM = {
 }
 
 BY_EPL_TEAM = {
-    EPLTeams.ARS.value: ["Arsenal", "charles_watts"],
+    EPLTeams.ARS.value: ["Arsenal", "charles_watts", "FunnyGooner", "EduardoHagn"],
     EPLTeams.AVL.value: ["AVFCOfficial"],
     EPLTeams.BRE.value: ["BrentfordFC"],
     EPLTeams.BHA.value: ["OfficialBHAFC"],
@@ -56,6 +61,9 @@ BY_EPL_TEAM = {
         "SJohnsonSport",
         "NizaarKinsella",
         "CFCDaily",
+        "Blue_Footy",
+        "CarefreeYouth",
+        "eli_helenek",
     ],
     EPLTeams.CRY.value: ["CPFC"],
     EPLTeams.EVE.value: ["Everton"],
