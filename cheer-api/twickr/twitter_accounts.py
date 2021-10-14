@@ -31,7 +31,16 @@ BY_SPORT = {
         "EBL2017",
         "henrywinter",
     ],
-    Sports.F1.value: ["F1", "SkySportsF1"],
+    Sports.F1.value: [
+        "F1",
+        "SkySportsF1",
+        "chrismedlandf1",
+        "lukesmithf1",
+        "wearetherace",
+        "kunalashah",
+        "f1niharika",
+        "adamcooperf1",
+    ],
 }
 
 BY_EVENT = {
