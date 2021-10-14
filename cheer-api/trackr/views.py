@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http.request import HttpRequest
 from django.http.response import JsonResponse
 from django.views import View
@@ -10,7 +11,7 @@ class RealtimeStatsView(View):
     def get(self, request: HttpRequest, *args, **kwargs):
         return JsonResponse(
             {
-                "realtime": f"ws://{request.get_host()}/ws/trackr/realtime/",
+                "realtime": f"ws://{settings.WS_API_URL}/ws/trackr/realtime/",
                 "events": [
                     {
                         "event": event.decode().split(TRACKR_PREFIX)[-1],

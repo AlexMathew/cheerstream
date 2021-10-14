@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http.request import HttpRequest
 from django.http.response import JsonResponse
 from django.views import View
@@ -10,6 +11,6 @@ class WebsocketView(View):
         protocol = "wss" if request.is_secure() else "ws"
         return JsonResponse(
             {
-                "websocket": f"{protocol}://{request.get_host()}/ws/{sport}/{event}/{match}/"
+                "websocket": f"{protocol}://{settings.WS_API_URL}/ws/{sport}/{event}/{match}/"
             }
         )
