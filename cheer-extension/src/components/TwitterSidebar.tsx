@@ -55,7 +55,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
       };
 
       socket.onclose = () => {
-        console.log('Socket closed');
+        console.log('Socket closed'); // eslint-disable-line no-console
       };
     };
 

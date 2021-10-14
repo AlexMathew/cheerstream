@@ -30,7 +30,7 @@ const App: React.FC = () => {
       }
     };
     socket.onclose = () => {
-      console.log('Socket closed');
+      console.log('Socket closed'); // eslint-disable-line no-console
     };
   };
 
