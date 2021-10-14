@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { getByXpath } from '../utils/xpath';
 import { EventDetails, getEventAndMatchDetails } from '../utils/details';
@@ -6,6 +6,16 @@ import { SUPPORTED_EVENTS, SUPPORTED_SPORTS } from '../constants';
 import TwitterSidebar from './TwitterSidebar';
 
 MutationObserver = window.MutationObserver;
+
+let SOCKET: WebSocket | null = null;
+
+const setSocket = (ws: WebSocket) => {
+  SOCKET = ws;
+};
+
+const closeSocket = () => {
+  SOCKET ? SOCKET.close() : null;
+};
 
 const insertTweetSidebar = (playerBase: Node) => {
   const existingSidebar: Node | null = getByXpath(
@@ -22,7 +32,7 @@ const insertTweetSidebar = (playerBase: Node) => {
     sidebar.style.height = `${watchAreaInner?.offsetHeight}px` ?? 'auto';
 
     watchAreaInner?.appendChild(sidebar);
-    ReactDOM.render(<TwitterSidebar />, sidebar);
+    ReactDOM.render(<TwitterSidebar setSocket={setSocket} />, sidebar);
   }
 };
 
@@ -38,15 +48,23 @@ const shouldInsertSidebarForEvent = (): boolean => {
 };
 
 const ContentScript: React.FC = () => {
+  const [sidebarAdded, setSidebarAdded] = useState<boolean>(false);
+  const sidebarRef = useRef(sidebarAdded);
+  sidebarRef.current = sidebarAdded;
+
   useEffect(() => {
     var observer = new MutationObserver(() => {
       const playerBase: Node | null = getByXpath(`//div[@class="player-base"]`);
 
-      if (playerBase) {
+      if (playerBase && !sidebarRef.current) {
         const liveStreamBadge = document.querySelector('.live-watermark-badge');
         if (liveStreamBadge && shouldInsertSidebarForEvent()) {
           insertTweetSidebar(playerBase);
+          setSidebarAdded(true);
         }
+      } else if (!playerBase && sidebarRef.current) {
+        setSidebarAdded(false);
+        closeSocket();
       }
     });
     setTimeout(

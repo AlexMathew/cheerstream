@@ -7,7 +7,9 @@ import { WebsocketEvent } from '../utils/websocket';
 import { DOMCustomEventType } from '../constants';
 import { TwitterEmbedEvent } from '../types';
 
-interface TwitterSidebarProps {}
+interface TwitterSidebarProps {
+  setSocket: (ws: WebSocket) => void;
+}
 
 async function getWebsocket() {
   const eventDetails: EventDetails = getEventAndMatchDetails(
@@ -39,12 +41,13 @@ function getSidebarWidth() {
   return `${sidebarHolder?.offsetWidth}px` ?? 'inherit';
 }
 
-const TwitterSidebar: React.FC<TwitterSidebarProps> = ({}) => {
+const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
   const [tweets, setTweets] = useState<string[]>([]);
 
   useEffect(() => {
     const connectToWebsocket = async () => {
       const socket = await getWebsocket();
+      setSocket(socket);
       socket.onmessage = (e: MessageEvent<string>) => {
         const data: WebsocketEvent = JSON.parse(e.data);
         setTweets((tweets) => [data.message, ...tweets]);
