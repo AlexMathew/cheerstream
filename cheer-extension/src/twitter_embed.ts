@@ -34,7 +34,7 @@ document.addEventListener(
             align: 'center',
           },
         ),
-      15 * 1000,
+      30 * 1000,
     );
   },
 );
