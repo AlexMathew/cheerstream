@@ -9,9 +9,10 @@ from .constants import TRACKR_PREFIX
 
 class RealtimeStatsView(View):
     def get(self, request: HttpRequest, *args, **kwargs):
+        protocol = "wss" if request.is_secure() else "ws"
         return JsonResponse(
             {
-                "realtime": f"ws://{settings.WS_API_URL}/ws/trackr/realtime/",
+                "realtime": f"{protocol}://{settings.WS_API_URL}/ws/trackr/realtime/",
                 "events": [
                     {
                         "event": event.decode().split(TRACKR_PREFIX)[-1],
