@@ -26,7 +26,10 @@ const App: React.FC = () => {
         if (updatedEvent.count > updatedEvent.max) {
           updatedEvent.max = updatedEvent.count;
         }
-        setEvents({ ...events, [data.message.event]: updatedEvent });
+        setEvents((events) => ({
+          ...events,
+          [data.message.event]: updatedEvent,
+        }));
       }
     };
     socket.onclose = () => {
