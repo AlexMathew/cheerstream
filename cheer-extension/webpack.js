@@ -6,7 +6,6 @@ const srcDir = path.join(__dirname, 'src');
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: {
-    background: path.join(srcDir, 'background.ts'),
     content: path.join(srcDir, 'content.tsx'),
     twitter_embed: path.join(srcDir, 'twitter_embed.ts'),
   },
