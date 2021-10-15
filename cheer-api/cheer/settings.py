@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "r6rhdd7g58.execute-api.us-east-1.amazonaws.com",
     "api.twickr.live",
+    "172.31.90.2",
     "twickr-server-34418577.us-east-1.elb.amazonaws.com",
     "ws.twickr.live",
 ]
