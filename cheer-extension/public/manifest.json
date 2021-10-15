@@ -19,6 +19,6 @@
     "persistent": true
   },
   "web_accessible_resources": ["js/twitter_embed.js"],
-  "permissions": ["storage", "tabs", "alarms"],
+  "permissions": [],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
