@@ -19,6 +19,7 @@ CHANNEL_LAYER = get_channel_layer()
 def build_rules(accounts: List[str]) -> List[Dict[str, str]]:
     rules: List[Dict[str, str]] = []
     current_rule: str = ""
+    print(f"Building rules for {len(accounts)} accounts")
     for account in accounts:
         if (STREAM_RULE_MAX_LENGTH - len(current_rule)) < (
             STREAM_RULE_CONNECTOR_LENGTH + len(account)
@@ -44,6 +45,7 @@ def get_rules():
 
 
 def add_rules(rules):
+    print(f"Adding {len(rules)} rules")
     resp = requests.post(
         "https://api.twitter.com/2/tweets/search/stream/rules",
         json={"add": rules},
@@ -56,6 +58,7 @@ def add_rules(rules):
 
 
 def delete_rules(rules):
+    print(f"Deleting {rules['meta']['result_count']} rules")
     if rules["meta"]["result_count"] == 0:
         return
 
