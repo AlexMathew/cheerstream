@@ -30,6 +30,21 @@ const App: React.FC = () => {
           ...events,
           [data.message.event]: updatedEvent,
         }));
+      } else {
+        const createdDate = new Date();
+        const newEvent: Event = {
+          event: data.message.event,
+          created_at: `${createdDate.getFullYear()} ${createdDate.toLocaleString(
+            'default',
+            { month: 'short' },
+          )} ${createdDate.getDate()}`,
+          count: 1,
+          max: 1,
+        };
+        setEvents((events) => ({
+          ...events,
+          [data.message.event]: newEvent,
+        }));
       }
     };
     socket.onclose = () => {

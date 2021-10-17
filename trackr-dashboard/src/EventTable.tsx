@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Event } from './api/responseTypes';
+import _ from 'lodash';
 
 interface EventMap {
   [key: string]: Event;
@@ -22,6 +23,8 @@ export const EventTable: React.FC<EventTableProps> = ({ events }) => {
     color: 'limegreen',
     borderColor: 'limegreen',
   };
+
+  const sortedEvents = events ? _.sortBy(events, ['created_at']).reverse() : [];
 
   return (
     <main
@@ -54,19 +57,19 @@ export const EventTable: React.FC<EventTableProps> = ({ events }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {Object.keys(events).map((event) => (
-              <TableRow key={events[event].event}>
+            {sortedEvents.map((event) => (
+              <TableRow key={event.event}>
                 <TableCell sx={style} component="th" scope="row" align="left">
-                  {events[event].event}
+                  {event.event}
                 </TableCell>
                 <TableCell sx={style} align="left">
-                  {events[event].created_at}
+                  {event.created_at}
                 </TableCell>
                 <TableCell sx={style} align="left">
-                  {events[event].count}
+                  {event.count}
                 </TableCell>
                 <TableCell sx={style} align="left">
-                  {events[event].max}
+                  {event.max}
                 </TableCell>
               </TableRow>
             ))}

@@ -29,7 +29,7 @@ def log_connect(event: str):
     pipeline.watch(count_key)
     pipeline.watch(max_key)
     if not redis_instance.exists(event_key):
-        redis_instance.set(event_key, datetime.now().strftime("%A, %Y %b %d, %H:%M:%S"))
+        redis_instance.set(event_key, datetime.now().strftime("%Y %b %d, %A, %H:%M:%S"))
     current_count = int(pipeline.get(count_key) or 0)
     current_max = int(pipeline.get(max_key) or 0)
     pipeline.multi()
