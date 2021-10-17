@@ -46,7 +46,7 @@ BY_SPORT = {
 
 BY_EVENT = {
     Events.IPL.value: ["IPL"],
-    Events.T20_WC.value: [],
+    Events.T20_WC.value: ["ICC", "T20WorldCup"],
 }
 
 BY_IPL_TEAM = {
@@ -61,22 +61,22 @@ BY_IPL_TEAM = {
 }
 
 BY_T20_WC_TEAM = {
-    T20WCTeams.AFG.value: [],
-    T20WCTeams.AUS.value: [],
-    T20WCTeams.BAN.value: [],
-    T20WCTeams.ENG.value: [],
-    T20WCTeams.IND.value: [],
-    T20WCTeams.IRE.value: [],
-    T20WCTeams.NAM.value: [],
-    T20WCTeams.NED.value: [],
-    T20WCTeams.NZ.value: [],
-    T20WCTeams.OMA.value: [],
-    T20WCTeams.PAK.value: [],
-    T20WCTeams.PNG.value: [],
-    T20WCTeams.SA.value: [],
-    T20WCTeams.SCO.value: [],
-    T20WCTeams.SL.value: [],
-    T20WCTeams.WI.value: [],
+    T20WCTeams.AFG.value: ["ACBofficials"],
+    T20WCTeams.AUS.value: ["cricketaus", "cricketcomau"],
+    T20WCTeams.BAN.value: ["BCBtigers"],
+    T20WCTeams.ENG.value: ["englandcricket"],
+    T20WCTeams.IND.value: ["BCCI", "indiancricnews"],
+    T20WCTeams.IRE.value: ["cricketireland"],
+    T20WCTeams.NAM.value: ["CricketNamibia1"],
+    T20WCTeams.NED.value: ["KNCBcricket"],
+    T20WCTeams.NZ.value: ["BLACKCAPS"],
+    T20WCTeams.OMA.value: ["theomancricket"],
+    T20WCTeams.PAK.value: ["TheRealPCB"],
+    T20WCTeams.PNG.value: ["Cricket_PNG"],
+    T20WCTeams.SA.value: ["OfficialCSA"],
+    T20WCTeams.SCO.value: ["CricketScotland"],
+    T20WCTeams.SL.value: ["OfficialSLC"],
+    T20WCTeams.WI.value: ["windiescricket"],
 }
 
 BY_EPL_TEAM = {
