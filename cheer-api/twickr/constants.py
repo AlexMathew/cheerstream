@@ -11,6 +11,7 @@ class Sports(Enum):
 
 class Events(Enum):
     IPL = "indian-premier-league"
+    T20_WC = "icc-mens-t20-world-cup"
 
 
 class IPLTeams(Enum):
@@ -22,6 +23,25 @@ class IPLTeams(Enum):
     RCB = "royal-challengers-bangalore"
     RR = "rajasthan-royals"
     SRH = "sunrisers-hyderabad"
+
+
+class T20WCTeams(Enum):
+    AFG = "afghanistan"
+    AUS = "australia"
+    BAN = "bangladesh"
+    ENG = "england"
+    IND = "india"
+    IRE = "ireland"
+    NAM = "namibia"
+    NED = "netherlands"
+    NZ = "new-zealand"
+    OMA = "oman"
+    PAK = "pakistan"
+    PNG = "papua-new-guinea"
+    SA = "south-africa"
+    SCO = "scotland"
+    SL = "sri-lanka"
+    WI = "west-indies"
 
 
 class EPLTeams(Enum):

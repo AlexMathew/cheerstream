@@ -1,6 +1,6 @@
 from itertools import chain
 
-from .constants import EPLTeams, Events, F1Teams, IPLTeams, Sports
+from .constants import EPLTeams, Events, F1Teams, IPLTeams, Sports, T20WCTeams
 
 BY_SPORT = {
     Sports.CRICKET.value: [
@@ -46,6 +46,7 @@ BY_SPORT = {
 
 BY_EVENT = {
     Events.IPL.value: ["IPL"],
+    Events.T20_WC.value: [],
 }
 
 BY_IPL_TEAM = {
@@ -57,6 +58,25 @@ BY_IPL_TEAM = {
     IPLTeams.RCB.value: ["RCBTweets"],
     IPLTeams.RR.value: ["rajasthanroyals"],
     IPLTeams.SRH.value: ["SunRisers"],
+}
+
+BY_T20_WC_TEAM = {
+    T20WCTeams.AFG.value: [],
+    T20WCTeams.AUS.value: [],
+    T20WCTeams.BAN.value: [],
+    T20WCTeams.ENG.value: [],
+    T20WCTeams.IND.value: [],
+    T20WCTeams.IRE.value: [],
+    T20WCTeams.NAM.value: [],
+    T20WCTeams.NED.value: [],
+    T20WCTeams.NZ.value: [],
+    T20WCTeams.OMA.value: [],
+    T20WCTeams.PAK.value: [],
+    T20WCTeams.PNG.value: [],
+    T20WCTeams.SA.value: [],
+    T20WCTeams.SCO.value: [],
+    T20WCTeams.SL.value: [],
+    T20WCTeams.WI.value: [],
 }
 
 BY_EPL_TEAM = {
@@ -139,7 +159,7 @@ BY_F1_TEAM = {
     F1Teams.WILLIAMS.value: ["WilliamsRacing"],
 }
 
-BY_TEAM = {**BY_IPL_TEAM, **BY_EPL_TEAM, **BY_F1_TEAM}
+BY_TEAM = {**BY_IPL_TEAM, **BY_T20_WC_TEAM, **BY_EPL_TEAM, **BY_F1_TEAM}
 
 
 def create_reverse_mapping(mapping):

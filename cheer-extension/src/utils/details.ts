@@ -11,7 +11,7 @@ export type EventDetails = {
 };
 
 const LIVE_STREAM_URL_REGEX: RegExp =
-  /in\/sports\/(?<sport>\w+)\/?(?<event>indian-premier-league)?\/(?<match>[\w-]+)(\/live-streaming)?\/\d+/i;
+  /in\/sports\/(?<sport>\w+)\/?(?<event>indian-premier-league|icc-mens-t20-world-cup)?\/(?<match>[\w-]+)(\/live-streaming)?\/\d+/i;
 
 export function getEventAndMatchDetails(path: string): EventDetails {
   const match: RegExpExecArray | null = LIVE_STREAM_URL_REGEX.exec(path);
