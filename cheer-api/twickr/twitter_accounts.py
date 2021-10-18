@@ -6,7 +6,6 @@ BY_SPORT = {
     Sports.CRICKET.value: [
         "ESPNcricinfo",
         "cricbuzz",
-        "StarSportsIndia",
         "cricketaakash",
         "bhogleharsha",
         "WasimJaffer14",
@@ -15,6 +14,10 @@ BY_SPORT = {
         "ajarrodkimber",
         "im_sandipan",
         "cricvizanalyst",
+        "SriniMaama16",
+        "chand2579",
+        "beastieboy07",
+        "cricsubhayan",
     ],
     Sports.FOOTBALL.value: [
         "premierleague",
@@ -50,6 +53,11 @@ BY_SPORT = {
         "kunalashah",
         "f1niharika",
         "adamcooperf1",
+        "LightsOutF1Blog",
+        "HillF1",
+        "MattyWTF1",
+        "chainbear",
+        "wtf1official",
     ],
 }
 
@@ -64,6 +72,7 @@ BY_EVENT = {
         "BdJcricket",
         "NickFriend1",
         "sreshthx",
+        "fwildecricket",
     ],
 }
 
@@ -93,7 +102,7 @@ BY_T20_WC_TEAM = {
     T20WCTeams.PNG.value: ["Cricket_PNG"],
     T20WCTeams.SA.value: ["OfficialCSA"],
     T20WCTeams.SCO.value: ["CricketScotland"],
-    T20WCTeams.SL.value: ["OfficialSLC"],
+    T20WCTeams.SL.value: ["OfficialSLC", "rexclementine"],
     T20WCTeams.WI.value: ["windiescricket"],
 }
 
