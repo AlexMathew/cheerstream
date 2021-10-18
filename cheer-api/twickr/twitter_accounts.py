@@ -12,6 +12,9 @@ BY_SPORT = {
         "WasimJaffer14",
         "cricketwallah",
         "toisports",
+        "ajarrodkimber",
+        "im_sandipan",
+        "cricvizanalyst",
     ],
     Sports.FOOTBALL.value: [
         "premierleague",
@@ -31,6 +34,12 @@ BY_SPORT = {
         "henrywinter",
         "CursedFootball",
         "DeludedBrendan",
+        "LetsTalk_FPL",
+        "Zonal_Marking",
+        "melissareddy_",
+        "MiguelDelaney",
+        "GaryLineker",
+        "BBCMOTD",
     ],
     Sports.F1.value: [
         "F1",
@@ -45,19 +54,28 @@ BY_SPORT = {
 }
 
 BY_EVENT = {
-    Events.IPL.value: ["IPL"],
-    Events.T20_WC.value: ["ICC", "T20WorldCup"],
+    # Events.IPL.value: ["IPL"],
+    Events.T20_WC.value: [
+        "ICC",
+        "T20WorldCup",
+        "daniel86cricket",
+        "peterdellapenna",
+        "timwig",
+        "BdJcricket",
+        "NickFriend1",
+        "sreshthx",
+    ],
 }
 
 BY_IPL_TEAM = {
-    IPLTeams.CSK.value: ["ChennaiIPL"],
-    IPLTeams.DC.value: ["DelhiCapitals"],
-    IPLTeams.KKR.value: ["KKRiders"],
-    IPLTeams.MI.value: ["mipaltan"],
-    IPLTeams.PBKS.value: ["PunjabKingsIPL"],
-    IPLTeams.RCB.value: ["RCBTweets"],
-    IPLTeams.RR.value: ["rajasthanroyals"],
-    IPLTeams.SRH.value: ["SunRisers"],
+    # IPLTeams.CSK.value: ["ChennaiIPL"],
+    # IPLTeams.DC.value: ["DelhiCapitals"],
+    # IPLTeams.KKR.value: ["KKRiders"],
+    # IPLTeams.MI.value: ["mipaltan"],
+    # IPLTeams.PBKS.value: ["PunjabKingsIPL"],
+    # IPLTeams.RCB.value: ["RCBTweets"],
+    # IPLTeams.RR.value: ["rajasthanroyals"],
+    # IPLTeams.SRH.value: ["SunRisers"],
 }
 
 BY_T20_WC_TEAM = {
@@ -88,10 +106,10 @@ BY_EPL_TEAM = {
         "yankeegunner",
         "gunnerblog",
     ],
-    EPLTeams.AVL.value: ["AVFCOfficial"],
-    EPLTeams.BRE.value: ["BrentfordFC"],
-    EPLTeams.BHA.value: ["OfficialBHAFC"],
-    EPLTeams.BUR.value: ["BurnleyOfficial"],
+    EPLTeams.AVL.value: ["AVFCOfficial", "greggevans40"],
+    EPLTeams.BRE.value: ["BrentfordFC", "jaydmharris"],
+    EPLTeams.BHA.value: ["OfficialBHAFC", "andynaylorbhafc"],
+    EPLTeams.BUR.value: ["BurnleyOfficial", "adjones_journo"],
     EPLTeams.CHE.value: [
         "ChelseaFC",
         "AlexGoldberg_",
@@ -102,11 +120,12 @@ BY_EPL_TEAM = {
         "CarefreeYouth",
         "eli_helenek",
         "Sam_InkersoleTM",
+        "siphillipssport",
     ],
-    EPLTeams.CRY.value: ["CPFC"],
-    EPLTeams.EVE.value: ["Everton"],
-    EPLTeams.LEE.value: ["LUFC"],
-    EPLTeams.LEI.value: ["LCFC"],
+    EPLTeams.CRY.value: ["CPFC", "mattwoosie"],
+    EPLTeams.EVE.value: ["Everton", "paddy_boyland"],
+    EPLTeams.LEE.value: ["LUFC", "philhay_"],
+    EPLTeams.LEI.value: ["LCFC", "robtannerlcfc", "TheSharpeEnd"],
     EPLTeams.LIV.value: [
         "LFC",
         "jamespearcelfc",
@@ -137,13 +156,19 @@ BY_EPL_TEAM = {
         "maramperninety",
         "UTDTrey",
     ],
-    EPLTeams.NEW.value: ["NUFC"],
-    EPLTeams.NOR.value: ["NorwichCityFC"],
-    EPLTeams.SOU.value: ["SouthamptonFC"],
-    EPLTeams.TOT.value: ["SpursOfficial", "dan_kp", "thespursweb"],
-    EPLTeams.WAT.value: ["WatfordFC"],
-    EPLTeams.WHU.value: ["WestHam"],
-    EPLTeams.WOL.value: ["Wolves"],
+    EPLTeams.NEW.value: ["NUFC", "chrisdhwaugh"],
+    EPLTeams.NOR.value: ["NorwichCityFC", "michaeljbailey"],
+    EPLTeams.SOU.value: ["SouthamptonFC", "tomleachhl"],
+    EPLTeams.TOT.value: [
+        "SpursOfficial",
+        "dan_kp",
+        "thespursweb",
+        "jackpittbrooke",
+        "cdeccleshare",
+    ],
+    EPLTeams.WAT.value: ["WatfordFC", "ant_watford"],
+    EPLTeams.WHU.value: ["WestHam", "roshanesport"],
+    EPLTeams.WOL.value: ["Wolves", "TimSpiers"],
 }
 
 BY_F1_TEAM = {
