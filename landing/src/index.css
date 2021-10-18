@@ -30,3 +30,11 @@ body {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
+
+.btn-secondary {
+  background-color: rgba(21, 0, 80, 1);
+}
+
+.summary {
+  background: linear-gradient(rgb(63, 0, 113) 9.86%, rgb(97, 0, 148) 87.79%);
+}
