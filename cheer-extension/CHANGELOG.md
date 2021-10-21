@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+- Update logo
+
 ## 1.0.1
 
 - Add support for the ICC Men's T20 World Cup
