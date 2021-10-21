@@ -10,7 +10,7 @@ body {
 .btn {
   border-radius: 9999px;
   background-color: rgba(97, 0, 148, 1);
-  padding: 9px 14px;
+  padding: 12px 12px;
   font-weight: 700;
   color: rgba(255, 255, 255, 1);
   transition-property: background-color, border-color, color, fill, stroke,
@@ -36,5 +36,9 @@ body {
 }
 
 .summary {
-  background: linear-gradient(rgb(63, 0, 113) 9.86%, rgb(97, 0, 148) 87.79%);
+  background: linear-gradient(
+    135deg,
+    rgb(63, 0, 113) 9.86%,
+    rgb(97, 0, 148) 87.79%
+  );
 }

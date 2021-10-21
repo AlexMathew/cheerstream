@@ -4,7 +4,7 @@ interface IntroProps {}
 
 export const Intro: React.FC<IntroProps> = () => {
   return (
-    <div className="px-7 lg:px-0 m-auto mt-20 text-center">
+    <div className="px-7 lg:px-0 m-auto mt-20 text-center mb-80">
       <h1 className="mx-auto font-bold text-3xl md:text-5xl">
         Live sports and tweets — all in one screen
       </h1>
@@ -16,7 +16,7 @@ export const Intro: React.FC<IntroProps> = () => {
         target="_blank"
         rel="noopener noreferrer"
         draggable="false"
-        className="inline-block text-white mt-8 btn text-base hover:scale-98 active:scale-95 noselect w-36"
+        className="inline-block text-white mt-8 btn text-base leading-8 hover:scale-98 active:scale-95 noselect w-40"
       >
         Add to Chrome
       </a>
