@@ -4,7 +4,7 @@ interface IntroProps {}
 
 export const Intro: React.FC<IntroProps> = () => {
   return (
-    <div className="px-7 lg:px-0 m-auto mt-20 text-center mb-80">
+    <div className="px-7 lg:px-0 m-auto mt-20 text-center">
       <h1 className="mx-auto font-bold text-3xl md:text-5xl">
         Live sports and tweets — all in one screen
       </h1>

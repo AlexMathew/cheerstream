@@ -42,3 +42,9 @@ body {
     rgb(97, 0, 148) 87.79%
   );
 }
+
+.tab-title {
+  transition-duration: 0.15s;
+  transition-property: font-weight;
+  transition-timing-function: ease-in-out;
+}
