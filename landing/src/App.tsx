@@ -1,4 +1,5 @@
 import React from "react";
+import { Footer } from "./components/Footer";
 import Header from "./components/Header";
 import { Intro } from "./components/Intro";
 import { Screenshots } from "./components/Screenshots";
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         {/* <Summary /> */}
         <Screenshots />
       </main>
+      <Footer />
     </>
   );
 };
