@@ -20,10 +20,11 @@ async function getWebsocket(eventDetails: EventDetails) {
   return socket;
 }
 
-async function embedTweet(tweetId: string) {
+async function embedTweet(tweetId: string, newTweet: boolean) {
   const embedEvent: TwitterEmbedEvent = {
     tweetId,
     className: `twickr-sidebar-${tweetId}`,
+    newTweet,
   };
   document.dispatchEvent(
     new CustomEvent<TwitterEmbedEvent>(DOMCustomEventType.TWITTER_EMBED, {
@@ -63,7 +64,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
     if (newTweet) {
       addToStorage(tweetId);
     }
-    embedTweet(tweetId);
+    embedTweet(tweetId, newTweet);
   };
 
   useEffect(() => {

@@ -24,6 +24,7 @@ document.addEventListener(
   DOMCustomEventType.TWITTER_EMBED,
   function (e: CustomEvent<TwitterEmbedEvent>) {
     const embedDetails = e.detail;
+    const timeout = embedDetails.newTweet ? 30 : 0;
 
     setTimeout(
       () =>
@@ -34,7 +35,7 @@ document.addEventListener(
             align: 'center',
           },
         ),
-      30 * 1000,
+      timeout * 1000,
     );
   },
 );
