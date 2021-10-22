@@ -4,17 +4,14 @@ import twickr from '../api/twickr';
 import { AxiosResponse } from 'axios';
 import { WebsocketResponse } from '../api/responseTypes';
 import { WebsocketEvent } from '../utils/websocket';
-import { DOMCustomEventType } from '../constants';
+import { DOMCustomEventType, TWEETS_LOCAL_STORAGE_PREFIX } from '../constants';
 import { TwitterEmbedEvent } from '../types';
 
 interface TwitterSidebarProps {
   setSocket: (ws: WebSocket) => void;
 }
 
-async function getWebsocket() {
-  const eventDetails: EventDetails = getEventAndMatchDetails(
-    document.location.pathname,
-  );
+async function getWebsocket(eventDetails: EventDetails) {
   const wsResponse: AxiosResponse<WebsocketResponse> =
     await twickr.get<WebsocketResponse>(
       `/websocket/${eventDetails.sport}/${eventDetails.event}/${eventDetails.match}/`,
@@ -43,15 +40,41 @@ function getSidebarWidth() {
 
 const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
   const [tweets, setTweets] = useState<string[]>([]);
+  const eventDetails: EventDetails = getEventAndMatchDetails(
+    document.location.pathname,
+  );
+  const localStorageKey = `${TWEETS_LOCAL_STORAGE_PREFIX}${eventDetails.sport}-${eventDetails.event}-${eventDetails.match}`;
+
+  const getExistingTweetsFromStorage = (): string[] => {
+    const tweetIdsString: string =
+      localStorage.getItem(localStorageKey) || '[]';
+    const tweetIds: string[] = JSON.parse(tweetIdsString);
+    return tweetIds;
+  };
+
+  const addToStorage = (tweetId: string) => {
+    const tweetIds: string[] = getExistingTweetsFromStorage();
+    const updatedTweetIds: string[] = [...tweetIds, tweetId];
+    localStorage.setItem(localStorageKey, JSON.stringify(updatedTweetIds));
+  };
+
+  const processTweet = (tweetId: string, newTweet: boolean) => {
+    setTweets((tweets) => [tweetId, ...tweets]);
+    if (newTweet) {
+      addToStorage(tweetId);
+    }
+    embedTweet(tweetId);
+  };
 
   useEffect(() => {
     const connectToWebsocket = async () => {
-      const socket = await getWebsocket();
+      const tweetIds: string[] = getExistingTweetsFromStorage();
+      tweetIds.forEach((tweetId) => processTweet(tweetId, false));
+      const socket = await getWebsocket(eventDetails);
       setSocket(socket);
       socket.onmessage = (e: MessageEvent<string>) => {
         const data: WebsocketEvent = JSON.parse(e.data);
-        setTweets((tweets) => [data.message, ...tweets]);
-        embedTweet(data.message);
+        processTweet(data.message, true);
       };
 
       socket.onclose = () => {
