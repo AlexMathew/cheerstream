@@ -30,11 +30,11 @@ export const Screenshots: React.FC<ScreenshotsProps> = () => {
       </div>
       <div className="max-w-lg px-7 md:pl-6 md:py-5 lg:pl-0">
         <h2 className="md:text-3xl text-xl font-bold leading-10 drop-shadow hidden md:block">
-          Live sports and tweets — all in one screen
+          Live commentary. Insights. Reactions. The best from Twitter right on
+          Hotstar.
         </h2>
         <p className="leading-6 text-lg md:pt-6 md:text-xl opacity-80">
-          Twickr lets you live stream tweets while watching live sports on
-          Hotstar
+          Enhance your match experience for multiple sports.
         </p>
         <div className="inline-flex flex-col items-start mt-8 space-y-4 ">
           <div>

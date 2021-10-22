@@ -9,7 +9,8 @@ export const Intro: React.FC<IntroProps> = () => {
         Live sports and tweets — all in one screen
       </h1>
       <p className="max-w-6xl sm:max-w-screen-sm mx-auto font-normal opacity-60 mt-7 text-lg md:text-2xl">
-        Twickr lets you live stream tweets while watching live sports on Hotstar
+        Twickr brings you live tweets from top Twitter accounts on the same
+        screen as your live sports on Hotstar.
       </p>
       <a
         href="https://chrome.google.com/webstore/detail/twickr-for-hotstar/ohjenobipjkabhgcfhglplhaeagjlgdn/"
