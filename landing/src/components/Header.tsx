@@ -4,10 +4,15 @@ interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
   return (
-    <header className="sticky top-0 z-30 h-16 bg-skin-fill bg-opacity-60 backdrop-filter firefox:bg-opacity-90 backdrop-blur-xl px-10 py-10 mx-32">
+    <header className="sticky top-0 z-30 h-16 bg-skin-fill bg-opacity-60 backdrop-filter firefox:bg-opacity-90 backdrop-blur-xl px-10 py-10 lg:mx-32">
       <div className="flex items-center justify-between h-full md:mx-auto">
         <div className="cursor-pointer flex items-center justify-between">
-          twickr
+          <img
+            className="h-24 mt-6"
+            src="/logo192_with_text.png"
+            alt="Twickr"
+            draggable="false"
+          />
         </div>
         <div className="flex items-center space-x-2">
           <div className="w-36">
