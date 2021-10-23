@@ -40,7 +40,9 @@ export const Screenshots: React.FC<ScreenshotsProps> = () => {
           <div>
             <button
               className={`tab-title text-xl font-semibold opacity-60 hover:opacity-80 ${
-                selected === "cricket" ? "opacity-100 font-bold" : ""
+                selected === "cricket"
+                  ? "opacity-100 font-bold border-white border-solid border-b-2"
+                  : ""
               }`}
               onClick={() => selectSport("cricket")}
             >
@@ -50,7 +52,9 @@ export const Screenshots: React.FC<ScreenshotsProps> = () => {
           <div>
             <button
               className={`tab-title text-xl font-semibold opacity-60 hover:opacity-80 ${
-                selected === "football" ? "opacity-100 font-bold" : ""
+                selected === "football"
+                  ? "opacity-100 font-bold border-white border-solid border-b-2"
+                  : ""
               }`}
               onClick={() => selectSport("football")}
             >
@@ -60,7 +64,9 @@ export const Screenshots: React.FC<ScreenshotsProps> = () => {
           <div>
             <button
               className={`tab-title text-xl font-semibold opacity-60 hover:opacity-80 ${
-                selected === "f1" ? "opacity-100 font-bold" : ""
+                selected === "f1"
+                  ? "opacity-100 font-bold border-white border-solid border-b-2"
+                  : ""
               }`}
               onClick={() => selectSport("f1")}
             >
