@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.5
+
+- Add GA event tracking for sidebar loading and tweet embedding
+
 ## 0.1.4
 
 - Embed persisted tweets immediately when retrieved from storage

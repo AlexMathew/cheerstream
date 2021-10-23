@@ -4,8 +4,12 @@ import twickr from '../api/twickr';
 import { AxiosResponse } from 'axios';
 import { WebsocketResponse } from '../api/responseTypes';
 import { WebsocketEvent } from '../utils/websocket';
-import { DOMCustomEventType, TWEETS_LOCAL_STORAGE_PREFIX } from '../constants';
-import { TwitterEmbedEvent } from '../types';
+import {
+  DOMCustomEventType,
+  MESSAGE_ACTIONS,
+  TWEETS_LOCAL_STORAGE_PREFIX,
+} from '../constants';
+import { ChromeMessage, TwitterEmbedEvent } from '../types';
 
 interface TwitterSidebarProps {
   setSocket: (ws: WebSocket) => void;
@@ -65,6 +69,15 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
       addToStorage(tweetId);
     }
     embedTweet(tweetId, newTweet);
+    if (newTweet) {
+      chrome.runtime.sendMessage<ChromeMessage>({
+        action: MESSAGE_ACTIONS.GA_TWEET_EMBEDDED,
+        data: {
+          event: `${eventDetails.sport}-${eventDetails.event}-${eventDetails.match}`,
+          tweetId,
+        },
+      });
+    }
   };
 
   useEffect(() => {
@@ -83,6 +96,12 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
       };
     };
 
+    chrome.runtime.sendMessage<ChromeMessage>({
+      action: MESSAGE_ACTIONS.GA_SIDEBAR_LOADED,
+      data: {
+        event: `${eventDetails.sport}-${eventDetails.event}-${eventDetails.match}`,
+      },
+    });
     connectToWebsocket();
   }, []);
 

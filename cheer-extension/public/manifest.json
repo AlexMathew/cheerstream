@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Twickr for Hotstar",
   "short_name": "Twickr",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Add live tweets to your sports streams on Hotstar",
   "icons": {
     "192": "icons/logo192.png"
@@ -14,7 +14,11 @@
       "run_at": "document_end"
     }
   ],
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": true
+  },
   "web_accessible_resources": ["js/twitter_embed.js"],
   "permissions": [],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com 'unsafe-eval'; object-src 'self'"
 }
