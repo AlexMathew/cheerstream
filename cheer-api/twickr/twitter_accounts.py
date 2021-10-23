@@ -20,6 +20,7 @@ BY_SPORT = {
         "cricsubhayan",
         "kaustats",
         "CursedCricket__",
+        "vikramsathaye",
     ],
     Sports.FOOTBALL.value: [
         "premierleague",
@@ -85,6 +86,9 @@ BY_EVENT = {
         "DGBeswick1",
         "andrewnixon79",
         "Thejuly23rdd",
+        "benjonescricket",
+        "srini_vk",
+        "IndianMourinho",
     ],
 }
 
@@ -115,7 +119,7 @@ BY_T20_WC_TEAM = {
     T20WCTeams.SA.value: ["OfficialCSA"],
     T20WCTeams.SCO.value: ["CricketScotland"],
     T20WCTeams.SL.value: ["OfficialSLC", "rexclementine"],
-    T20WCTeams.WI.value: ["windiescricket"],
+    T20WCTeams.WI.value: ["windiescricket", "CaribCricket"],
 }
 
 BY_EPL_TEAM = {
