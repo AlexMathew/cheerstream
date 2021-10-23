@@ -34,7 +34,7 @@ export const Screenshots: React.FC<ScreenshotsProps> = () => {
           Hotstar.
         </h2>
         <p className="leading-6 text-lg md:pt-6 md:text-xl opacity-80">
-          Enhance your match experience for multiple sports.
+          Enhance your match experience for your favourite sports.
         </p>
         <div className="inline-flex flex-col items-start mt-8 space-y-4 ">
           <div>
