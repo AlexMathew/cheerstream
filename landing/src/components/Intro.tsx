@@ -23,13 +23,13 @@ export const Intro: React.FC<IntroProps> = () => {
           Add to Chrome
         </a>
         <a
-          href="https://www.producthunt.com/posts/twickr-2?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-twickr-2"
+          href="https://www.producthunt.com/posts/twickr-2?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-twickr-2"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-8 md:mt-0 md:ml-8"
         >
           <img
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=316968&theme=dark"
+            src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=316968&theme=dark&period=daily"
             alt="Twickr - Add live tweets to your sports streams on Hotstar | Product Hunt"
             style={{ width: "250px", height: "54px" }}
             width="250"
