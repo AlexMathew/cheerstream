@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.6
+
+- Only persist 10 most recent tweets in storage
+
 ## 0.1.5
 
 - Add GA event tracking for sidebar loading and tweet embedding
