@@ -10,7 +10,6 @@ BY_SPORT = {
         "bhogleharsha",
         "WasimJaffer14",
         "cricketwallah",
-        "toisports",
         "ajarrodkimber",
         "im_sandipan",
         "cricvizanalyst",
@@ -30,6 +29,7 @@ BY_SPORT = {
         "deeputalks",
         "UPStatsman",
         "reemamalhotra8",
+        "OptaJeev",
     ],
     Sports.FOOTBALL.value: [
         "premierleague",
@@ -73,6 +73,7 @@ BY_SPORT = {
         "MattyWTF1",
         "chainbear",
         "wtf1official",
+        "PurePitWall",
     ],
 }
 
@@ -99,6 +100,7 @@ BY_EVENT = {
         "benjonescricket",
         "srini_vk",
         "IndianMourinho",
+        "mroller98",
     ],
 }
 
@@ -170,6 +172,7 @@ BY_EPL_TEAM = {
         "eli_helenek",
         "Sam_InkersoleTM",
         "siphillipssport",
+        "AbsoluteChelsea",
     ],
     EPLTeams.CRY.value: ["CPFC", "mattwoosie", "alitheeagle1", "talkcpfc"],
     EPLTeams.EVE.value: ["Everton", "paddy_boyland", "mightybluesyt"],
@@ -210,6 +213,7 @@ BY_EPL_TEAM = {
         "UtdDistrict",
         "utd_analytics",
         "SensibleUtd",
+        "CharDuncker",
     ],
     EPLTeams.NEW.value: ["NUFC", "chrisdhwaugh", "craighope_dm", "lee_ryder"],
     EPLTeams.NOR.value: ["NorwichCityFC", "michaeljbailey", "ianclarke41"],
