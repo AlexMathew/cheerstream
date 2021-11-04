@@ -1,4 +1,5 @@
 // @ts-nocheck
+import posthog from 'posthog-js';
 import { MESSAGE_ACTIONS } from './constants';
 import { ChromeMessage } from './types';
 
@@ -27,6 +28,10 @@ ga('create', 'UA-210868356-1', 'auto');
 // Modifications:
 ga('set', 'checkProtocolTask', null);
 
+posthog.init(process.env.POSTHOG_API_KEY, {
+  api_host: process.env.POSTHOG_API_HOST,
+});
+
 chrome.runtime.onMessage.addListener((message: ChromeMessage) => {
   switch (message.action) {
     case MESSAGE_ACTIONS.GA_SIDEBAR_LOADED:
@@ -34,12 +39,14 @@ chrome.runtime.onMessage.addListener((message: ChromeMessage) => {
       ga('send', 'event', 'sidebar', message.data.event, {
         nonInteraction: true,
       });
+      posthog.capture('sidebar_loaded', { event: message.data.event });
       break;
     case MESSAGE_ACTIONS.GA_TWEET_EMBEDDED:
       console.log('Tweet embedded');
       ga('send', 'event', 'tweet', 'embed', {
         nonInteraction: true,
       });
+      posthog.capture('tweet_embedded');
       break;
   }
 });
