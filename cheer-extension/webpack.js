@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const srcDir = path.join(__dirname, 'src');
 
 module.exports = {
@@ -27,6 +28,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js'],
   },
   plugins: [
+    new Dotenv(),
     new CopyPlugin({
       patterns: [{ from: '.', to: '../', context: 'public' }],
       options: {},

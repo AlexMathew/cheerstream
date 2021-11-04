@@ -24,3 +24,8 @@ yarn-debug.log*
 yarn-error.log*
 
 *.zip
+
+# Environments
+.env
+env/
+ENV/
