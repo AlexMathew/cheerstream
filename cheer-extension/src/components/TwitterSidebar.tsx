@@ -6,6 +6,7 @@ import { WebsocketResponse } from '../api/responseTypes';
 import { WebsocketEvent } from '../utils/websocket';
 import {
   DOMCustomEventType,
+  HOTSTAR_DEFAULT_SPORT,
   MESSAGE_ACTIONS,
   TWEETS_LOCAL_STORAGE_PREFIX,
 } from '../constants';
@@ -48,6 +49,12 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
   const eventDetails: EventDetails = getEventAndMatchDetails(
     document.location.pathname,
   );
+  const fallbackSportTag: string =
+    document.querySelector('.tag-holder .tag')?.textContent?.toLowerCase() ||
+    '';
+  if (eventDetails.sport === HOTSTAR_DEFAULT_SPORT) {
+    eventDetails.sport = fallbackSportTag;
+  }
   const localStorageKey = `${TWEETS_LOCAL_STORAGE_PREFIX}${eventDetails.sport}-${eventDetails.event}-${eventDetails.match}`;
 
   const getExistingTweetsFromStorage = (): string[] => {

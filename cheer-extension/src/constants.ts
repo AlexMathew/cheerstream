@@ -8,6 +8,8 @@ export const SPORTS = {
   F1: 'formula1',
 };
 
+export const HOTSTAR_DEFAULT_SPORT = 'sports';
+
 export const EVENTS = {
   IPL: 'indian-premier-league',
   T20_WC: 'icc-mens-t20-world-cup',

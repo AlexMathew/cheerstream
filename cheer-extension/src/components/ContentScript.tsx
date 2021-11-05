@@ -2,7 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { getByXpath } from '../utils/xpath';
 import { EventDetails, getEventAndMatchDetails } from '../utils/details';
-import { SUPPORTED_EVENTS, SUPPORTED_SPORTS } from '../constants';
+import {
+  HOTSTAR_DEFAULT_SPORT,
+  SUPPORTED_EVENTS,
+  SUPPORTED_SPORTS,
+} from '../constants';
 import TwitterSidebar from './TwitterSidebar';
 
 MutationObserver = window.MutationObserver;
@@ -40,10 +44,15 @@ const shouldInsertSidebarForEvent = (): boolean => {
   const eventDetails: EventDetails = getEventAndMatchDetails(
     document.location.pathname,
   );
+  const fallbackSportTag: string =
+    document.querySelector('.tag-holder .tag')?.textContent?.toLowerCase() ||
+    '';
 
   return (
     SUPPORTED_SPORTS.includes(eventDetails.sport) ||
-    SUPPORTED_EVENTS.includes(eventDetails.event)
+    SUPPORTED_EVENTS.includes(eventDetails.event) ||
+    (eventDetails.sport === HOTSTAR_DEFAULT_SPORT &&
+      SUPPORTED_SPORTS.includes(fallbackSportTag))
   );
 };
 

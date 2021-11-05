@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.8
+
+- Fix `/sports/sports/` URL scenario when reaching live stream through search
+
 ## 0.1.7
 
 - Setup Posthog for analytics
