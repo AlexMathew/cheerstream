@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.7
+
+- Setup Posthog for analytics
+
 ## 0.1.6
 
 - Only persist 10 most recent tweets in storage
