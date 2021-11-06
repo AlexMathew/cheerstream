@@ -58,6 +58,7 @@ BY_SPORT = {
         "xGPhilosophy",
         "vaibhardwaj",
         "Tactical_Times",
+        "PremLeaguePanel",
     ],
     Sports.F1.value: [
         "F1",
@@ -214,6 +215,7 @@ BY_EPL_TEAM = {
         "utd_analytics",
         "SensibleUtd",
         "CharDuncker",
+        "MonaShehata",
     ],
     EPLTeams.NEW.value: ["NUFC", "chrisdhwaugh", "craighope_dm", "lee_ryder"],
     EPLTeams.NOR.value: ["NorwichCityFC", "michaeljbailey", "ianclarke41"],
