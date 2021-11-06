@@ -57,7 +57,7 @@ class EPLTeams(Enum):
     LEI = "leicester"
     LIV = "liverpool"
     MCI = "manchester-city"
-    MUN = "manchester-united"
+    MUN = "manchester-utd"
     NEW = "newcastle"
     NOR = "norwich"
     SOU = "southampton"
