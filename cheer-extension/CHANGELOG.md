@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.9
+
+- Fix `/sports/sports/` URL scenario for cricket
+- Add analytics event for sidebar disconnection
+
 ## 0.1.8
 
 - Fix `/sports/sports/` URL scenario when reaching live stream through search
