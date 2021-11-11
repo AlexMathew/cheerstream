@@ -46,7 +46,17 @@ chrome.runtime.onMessage.addListener((message: ChromeMessage) => {
       ga('send', 'event', 'tweet', 'embed', {
         nonInteraction: true,
       });
-      posthog.capture('tweet_embedded');
+      posthog.capture('tweet_embedded', {
+        event: message.data.event,
+        tweetId: message.data.tweetId,
+      });
+      break;
+    case MESSAGE_ACTIONS.GA_SIDEBAR_DISCONNECTED:
+      console.log('Sidebar disconnected');
+      ga('send', 'event', 'sidebar', 'disconnect', {
+        nonInteraction: true,
+      });
+      posthog.capture('sidebar_disconnected');
       break;
   }
 });

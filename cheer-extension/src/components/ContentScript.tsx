@@ -5,10 +5,12 @@ import { EventDetails, getEventAndMatchDetails } from '../utils/details';
 import {
   FALLBACK_SUPPORTED_SPORTS,
   HOTSTAR_DEFAULT_SPORT,
+  MESSAGE_ACTIONS,
   SUPPORTED_EVENTS,
   SUPPORTED_SPORTS,
 } from '../constants';
 import TwitterSidebar from './TwitterSidebar';
+import { ChromeMessage } from '../types';
 
 MutationObserver = window.MutationObserver;
 
@@ -20,6 +22,10 @@ const setSocket = (ws: WebSocket) => {
 
 const closeSocket = () => {
   SOCKET ? SOCKET.close() : null;
+  chrome.runtime.sendMessage<ChromeMessage>({
+    action: MESSAGE_ACTIONS.GA_SIDEBAR_DISCONNECTED,
+    data: {},
+  });
 };
 
 const insertTweetSidebar = (playerBase: Node) => {
