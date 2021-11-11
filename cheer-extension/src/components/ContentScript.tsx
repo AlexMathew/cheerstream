@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { getByXpath } from '../utils/xpath';
 import { EventDetails, getEventAndMatchDetails } from '../utils/details';
 import {
+  FALLBACK_SUPPORTED_SPORTS,
   HOTSTAR_DEFAULT_SPORT,
   SUPPORTED_EVENTS,
   SUPPORTED_SPORTS,
@@ -52,7 +53,7 @@ const shouldInsertSidebarForEvent = (): boolean => {
     SUPPORTED_SPORTS.includes(eventDetails.sport) ||
     SUPPORTED_EVENTS.includes(eventDetails.event) ||
     (eventDetails.sport === HOTSTAR_DEFAULT_SPORT &&
-      SUPPORTED_SPORTS.includes(fallbackSportTag))
+      FALLBACK_SUPPORTED_SPORTS.includes(fallbackSportTag))
   );
 };
 

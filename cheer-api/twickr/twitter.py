@@ -1,12 +1,13 @@
 import re
 from typing import Dict, Optional
 
-from .constants import F1Teams, Sports
+from .constants import Events, F1Teams, Sports
 
 
 class BaseSportTwitter:
-    def __init__(self, sport: str, **kwargs):
+    def __init__(self, sport: str, event: Optional[str] = None, **kwargs):
         self.sport = sport
+        self.event = event
 
     @property
     def TEAMS_REGEX(self):
@@ -39,10 +40,11 @@ class TwitterSportClass(TwitterFactory):
 
 class CricketTwitter(BaseSportTwitter):
     TEAMS_REGEX = r"(?P<team1>[a-zA-Z-]+)-vs-(?P<team2>[a-zA-Z-]+)-"
+    DEFAULT_EVENT = Events.T20_WC.value
 
     def __init__(self, sport: str, event: Optional[str] = None, **kwargs):
         super().__init__(sport, **kwargs)
-        self.event = event
+        self.event = event or self.DEFAULT_EVENT
 
 
 class FootballTwitter(BaseSportTwitter):

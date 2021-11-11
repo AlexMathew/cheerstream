@@ -13,7 +13,7 @@ class TwickrConsumer(AsyncWebsocketConsumer):
     def group_names(self):
         return [
             self.sport,
-            self.event,
+            self.sport_twitter.event or DEFAULT_VALUE,
             *self.sport_twitter.get_teams_from_match(self.match).values(),
         ]
 

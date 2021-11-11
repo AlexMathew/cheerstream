@@ -16,6 +16,7 @@ export const EVENTS = {
 };
 
 export const SUPPORTED_SPORTS = [SPORTS.FOOTBALL, SPORTS.F1];
+export const FALLBACK_SUPPORTED_SPORTS = [...SUPPORTED_SPORTS, SPORTS.CRICKET];
 export const SUPPORTED_EVENTS = [EVENTS.IPL, EVENTS.T20_WC];
 
 export const TWEETS_LOCAL_STORAGE_PREFIX = 'twickr_tweets_';
