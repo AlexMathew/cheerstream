@@ -1,11 +1,14 @@
 import json
 import os
+from datetime import datetime
 from typing import Any, Dict, List
 
 import requests
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
+from helpers.instances import redis as redis_instance
 
+from .constants import MOST_RECENT_TWEET_TIMESTAMP_KEY
 from .twitter_accounts import ACCOUNT_TO_GROUP_MAPPING, ALL_ACCOUNTS
 
 TWITTER_BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN")
@@ -101,9 +104,13 @@ def process_tweet(tweet: Dict[str, Any]):
         author = author[0]
         group = ACCOUNT_TO_GROUP_MAPPING.get(author.get("username", ""))
         if group:
-            print(group, tweet_id)
+            print(author, group, tweet_id)
             async_to_sync(CHANNEL_LAYER.group_send)(
                 group, {"type": "event_message", "message": tweet_id}
+            )
+            redis_instance.set(
+                MOST_RECENT_TWEET_TIMESTAMP_KEY,
+                datetime.now().strftime("%Y %b %d, %A, %H:%M:%S"),
             )
 
 

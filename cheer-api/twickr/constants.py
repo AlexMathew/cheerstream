@@ -1,6 +1,7 @@
 from enum import Enum
 
 DEFAULT_VALUE = "default"
+MOST_RECENT_TWEET_TIMESTAMP_KEY = "most_recent_tweet_timestamp"
 
 
 class Sports(Enum):

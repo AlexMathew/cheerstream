@@ -3,7 +3,10 @@ from django.conf import settings
 from django.http.request import HttpRequest
 from django.http.response import JsonResponse
 from django.views import View
+from helpers.instances import redis as redis_instance
 from requests.models import Response
+
+from .constants import MOST_RECENT_TWEET_TIMESTAMP_KEY
 
 
 class WebsocketView(View):
@@ -33,3 +36,14 @@ class TwitterEmbedView(View):
             )
 
         return JsonResponse({"embed": ""})
+
+
+class MostRecentTweetView(View):
+    def get(self, request: HttpRequest, *args, **kwargs):
+        return JsonResponse(
+            {
+                "time": (
+                    redis_instance.get(MOST_RECENT_TWEET_TIMESTAMP_KEY) or b""
+                ).decode(),
+            }
+        )

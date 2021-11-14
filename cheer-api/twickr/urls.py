@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import TwitterEmbedView, WebsocketView
+from .views import MostRecentTweetView, TwitterEmbedView, WebsocketView
 
 urlpatterns = [
     path(
@@ -13,4 +13,5 @@ urlpatterns = [
         TwitterEmbedView.as_view(),
         name="twitter-embed-view",
     ),
+    path("recent/", MostRecentTweetView.as_view(), name="most-recent-tweet-view"),
 ]
