@@ -104,7 +104,7 @@ def process_tweet(tweet: Dict[str, Any]):
         author = author[0]
         group = ACCOUNT_TO_GROUP_MAPPING.get(author.get("username", ""))
         if group:
-            print(author, group, tweet_id)
+            print(author.get("username", ""), group, tweet_id)
             async_to_sync(CHANNEL_LAYER.group_send)(
                 group, {"type": "event_message", "message": tweet_id}
             )
