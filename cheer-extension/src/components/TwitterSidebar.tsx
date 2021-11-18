@@ -93,6 +93,13 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
       tweetIds.forEach((tweetId) => processTweet(tweetId, false));
       const socket = await getWebsocket(eventDetails);
       setSocket(socket);
+      chrome.runtime.sendMessage<ChromeMessage>({
+        action: MESSAGE_ACTIONS.GA_SIDEBAR_LOADED,
+        data: {
+          event: `${eventDetails.sport}-${eventDetails.event}-${eventDetails.match}`,
+        },
+      });
+
       socket.onmessage = (e: MessageEvent<string>) => {
         const data: WebsocketEvent = JSON.parse(e.data);
         processTweet(data.message, true);
@@ -103,12 +110,6 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
       };
     };
 
-    chrome.runtime.sendMessage<ChromeMessage>({
-      action: MESSAGE_ACTIONS.GA_SIDEBAR_LOADED,
-      data: {
-        event: `${eventDetails.sport}-${eventDetails.event}-${eventDetails.match}`,
-      },
-    });
     connectToWebsocket();
   }, []);
 
