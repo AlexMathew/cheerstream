@@ -11,7 +11,7 @@ export type EventDetails = {
 };
 
 const LIVE_STREAM_URL_REGEX: RegExp =
-  /in\/sports\/(?<sport>\w+)\/?(?<event>new-zealand-tour-of-india-202122|new-zealand-tour-of-india-2021)?\/(?<match>[\w-]+)(\/live-streaming)?\/\d+/i;
+  /in\/sports\/(?<sport>\w+)\/?(?<event>new-zealand-tour-of-india-202122|new-zealand-tour-of-india-2021|syed-mushtaq-ali-trophy)?\/(?<match>[\w-]+)(\/live-streaming)?\/\d+/i;
 
 export function getEventAndMatchDetails(path: string): EventDetails {
   const match: RegExpExecArray | null = LIVE_STREAM_URL_REGEX.exec(path);

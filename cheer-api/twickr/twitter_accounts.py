@@ -1,6 +1,13 @@
 from itertools import chain
 
-from .constants import CricketBilateralSeriesTeams, EPLTeams, Events, F1Teams, Sports
+from .constants import (
+    CricketBilateralSeriesTeams,
+    EPLTeams,
+    Events,
+    F1Teams,
+    Sports,
+    SyedMushtaqAliTrophyTeams,
+)
 
 BY_SPORT = {
     Sports.CRICKET.value: [
@@ -105,6 +112,7 @@ BY_EVENT = {
         "mroller98",
     ],
     Events.NZ_TOUR_OF_INDIA.value: [],
+    Events.SYED_MUSHTAQ_ALI_TROPHY.value: [],
 }
 
 BY_IPL_TEAM = {
@@ -140,6 +148,13 @@ BY_T20_WC_TEAM = {
 BY_BILATERAL_SERIES_TEAMS = {
     CricketBilateralSeriesTeams.IND.value: ["BCCI", "indiancricnews"],
     CricketBilateralSeriesTeams.NZ.value: ["BLACKCAPS"],
+}
+
+BY_SYED_MUSHTAQ_ALI_TROPHY_TEAMS = {
+    SyedMushtaqAliTrophyTeams.HYD.value: [],
+    SyedMushtaqAliTrophyTeams.KTKA.value: [],
+    SyedMushtaqAliTrophyTeams.TN.value: [],
+    SyedMushtaqAliTrophyTeams.VID.value: [],
 }
 
 BY_EPL_TEAM = {
