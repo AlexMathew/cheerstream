@@ -13,6 +13,7 @@ class Sports(Enum):
 class Events(Enum):
     IPL = "indian-premier-league"
     T20_WC = "icc-mens-t20-world-cup"
+    NZ_TOUR_OF_INDIA = "new-zealand-tour-of-india-202122"
 
 
 class IPLTeams(Enum):
@@ -24,6 +25,11 @@ class IPLTeams(Enum):
     RCB = "royal-challengers-bangalore"
     RR = "rajasthan-royals"
     SRH = "sunrisers-hyderabad"
+
+
+class CricketBilateralSeriesTeams(Enum):
+    IND = "india"
+    NZ = "new-zealand"
 
 
 class T20WCTeams(Enum):

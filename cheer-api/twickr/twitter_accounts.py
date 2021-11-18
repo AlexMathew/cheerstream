@@ -1,6 +1,6 @@
 from itertools import chain
 
-from .constants import EPLTeams, Events, F1Teams, IPLTeams, Sports, T20WCTeams
+from .constants import CricketBilateralSeriesTeams, EPLTeams, Events, F1Teams, Sports
 
 BY_SPORT = {
     Sports.CRICKET.value: [
@@ -75,6 +75,7 @@ BY_SPORT = {
         "chainbear",
         "wtf1official",
         "PurePitWall",
+        "F1Struggle",
     ],
 }
 
@@ -103,6 +104,7 @@ BY_EVENT = {
         "IndianMourinho",
         "mroller98",
     ],
+    Events.NZ_TOUR_OF_INDIA.value: [],
 }
 
 BY_IPL_TEAM = {
@@ -117,22 +119,27 @@ BY_IPL_TEAM = {
 }
 
 BY_T20_WC_TEAM = {
-    T20WCTeams.AFG.value: ["ACBofficials"],
-    T20WCTeams.AUS.value: ["cricketaus", "cricketcomau"],
-    T20WCTeams.BAN.value: ["BCBtigers"],
-    T20WCTeams.ENG.value: ["englandcricket"],
-    T20WCTeams.IND.value: ["BCCI", "indiancricnews"],
-    T20WCTeams.IRE.value: ["cricketireland"],
-    T20WCTeams.NAM.value: ["CricketNamibia1"],
-    T20WCTeams.NED.value: ["KNCBcricket"],
-    T20WCTeams.NZ.value: ["BLACKCAPS"],
-    T20WCTeams.OMA.value: ["theomancricket"],
-    T20WCTeams.PAK.value: ["TheRealPCB", "ArfaSays_", "SajSadiqCricket"],
-    T20WCTeams.PNG.value: ["Cricket_PNG"],
-    T20WCTeams.SA.value: ["OfficialCSA"],
-    T20WCTeams.SCO.value: ["CricketScotland"],
-    T20WCTeams.SL.value: ["OfficialSLC", "rexclementine"],
-    T20WCTeams.WI.value: ["windiescricket", "CaribCricket"],
+    # T20WCTeams.AFG.value: ["ACBofficials"],
+    # T20WCTeams.AUS.value: ["cricketaus", "cricketcomau"],
+    # T20WCTeams.BAN.value: ["BCBtigers"],
+    # T20WCTeams.ENG.value: ["englandcricket"],
+    # T20WCTeams.IND.value: ["BCCI", "indiancricnews"],
+    # T20WCTeams.IRE.value: ["cricketireland"],
+    # T20WCTeams.NAM.value: ["CricketNamibia1"],
+    # T20WCTeams.NED.value: ["KNCBcricket"],
+    # T20WCTeams.NZ.value: ["BLACKCAPS"],
+    # T20WCTeams.OMA.value: ["theomancricket"],
+    # T20WCTeams.PAK.value: ["TheRealPCB", "ArfaSays_", "SajSadiqCricket"],
+    # T20WCTeams.PNG.value: ["Cricket_PNG"],
+    # T20WCTeams.SA.value: ["OfficialCSA"],
+    # T20WCTeams.SCO.value: ["CricketScotland"],
+    # T20WCTeams.SL.value: ["OfficialSLC", "rexclementine"],
+    # T20WCTeams.WI.value: ["windiescricket", "CaribCricket"],
+}
+
+BY_BILATERAL_SERIES_TEAMS = {
+    CricketBilateralSeriesTeams.IND.value: ["BCCI", "indiancricnews"],
+    CricketBilateralSeriesTeams.NZ.value: ["BLACKCAPS"],
 }
 
 BY_EPL_TEAM = {
@@ -245,7 +252,13 @@ BY_F1_TEAM = {
     F1Teams.WILLIAMS.value: ["WilliamsRacing"],
 }
 
-BY_TEAM = {**BY_IPL_TEAM, **BY_T20_WC_TEAM, **BY_EPL_TEAM, **BY_F1_TEAM}
+BY_TEAM = {
+    **BY_IPL_TEAM,
+    **BY_T20_WC_TEAM,
+    **BY_BILATERAL_SERIES_TEAMS,
+    **BY_EPL_TEAM,
+    **BY_F1_TEAM,
+}
 
 
 def create_reverse_mapping(mapping):
