@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.10
+
+- Add support for NZ tour of India and Syed Mushtaq Ali trophy
+- Change trigger location for `sidebar_loaded` event
+
 ## 0.1.9
 
 - Fix `/sports/sports/` URL scenario for cricket
