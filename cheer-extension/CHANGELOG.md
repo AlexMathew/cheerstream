@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.11
+
+- Forgot to add to list of supported events 🤦‍♂️
+
 ## 0.1.10
 
 - Add support for NZ tour of India and Syed Mushtaq Ali trophy
