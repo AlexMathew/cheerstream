@@ -10,11 +10,16 @@ class Sports(Enum):
     F1 = "formula1"
 
 
-class Events(Enum):
+class CricketEvents(Enum):
     IPL = "indian-premier-league"
     T20_WC = "icc-mens-t20-world-cup"
     NZ_TOUR_OF_INDIA = "new-zealand-tour-of-india-202122"
     SYED_MUSHTAQ_ALI_TROPHY = "syed-mushtaq-ali-trophy"
+
+
+class FootballEvents(Enum):
+    ENGLISH_PREMIER_LEAGUE = "english-premier-league"
+    INDIAN_SUPER_LEAGUE = "indian-super-league"
 
 
 class IPLTeams(Enum):
@@ -80,6 +85,17 @@ class EPLTeams(Enum):
     WAT = "watford"
     WHU = "west-ham"
     WOL = "wolves"
+
+
+EPLTeamsList = [team.value for team in EPLTeams]
+
+
+class ISLTeams(Enum):
+    MUM = "mumbai-city"
+    GOA = "goa"
+
+
+ISLTeamsList = [team.value for team in ISLTeams]
 
 
 class F1Teams(Enum):

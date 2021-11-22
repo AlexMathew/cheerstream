@@ -1,6 +1,7 @@
 import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
+
 from trackr.consumers import TrackrConsumer
 from trackr.utils import log_connect, log_disconnect
 
@@ -23,7 +24,9 @@ class TwickrConsumer(AsyncWebsocketConsumer):
         self.match = self.scope["url_route"]["kwargs"]["match"]
         self.event_name_for_log = f"{self.sport}-{self.event}-{self.match}"
         self.sport_twitter = twitter_services.get(
-            self.sport, event=self.event if self.event != DEFAULT_VALUE else None
+            self.sport,
+            event=self.event if self.event != DEFAULT_VALUE else None,
+            match=self.match,
         )
 
         for group in self.group_names:

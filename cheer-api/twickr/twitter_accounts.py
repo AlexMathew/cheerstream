@@ -2,9 +2,11 @@ from itertools import chain
 
 from .constants import (
     CricketBilateralSeriesTeams,
+    CricketEvents,
     EPLTeams,
-    Events,
     F1Teams,
+    FootballEvents,
+    ISLTeams,
     Sports,
     SyedMushtaqAliTrophyTeams,
 )
@@ -27,35 +29,7 @@ BY_SPORT = {
         "GlobalLeagues",
         "sreshthx",
     ],
-    Sports.FOOTBALL.value: [
-        "premierleague",
-        "OfficialFPL",
-        "SkySportsPL",
-        "SkySportsStatto",
-        "OptaJoe",
-        "FFScout",
-        "TrollFootball",
-        "footballltrolls",
-        "footyhumour",
-        "OptaJoke",
-        "Squawka",
-        "SquawkaNews",
-        "StatmanDave",
-        "EBL2017",
-        "henrywinter",
-        "CursedFootball",
-        "DeludedBrendan",
-        "LetsTalk_FPL",
-        "Zonal_Marking",
-        "melissareddy_",
-        "MiguelDelaney",
-        "GaryLineker",
-        "BBCMOTD",
-        "xGPhilosophy",
-        "vaibhardwaj",
-        "Tactical_Times",
-        "PremLeaguePanel",
-    ],
+    Sports.FOOTBALL.value: [],
     Sports.F1.value: [
         "F1",
         "SkySportsF1",
@@ -75,9 +49,9 @@ BY_SPORT = {
     ],
 }
 
-BY_EVENT = {
-    # Events.IPL.value: ["IPL"],
-    Events.T20_WC.value: [
+BY_CRICKET_EVENT = {
+    # CricketEvents.IPL.value: ["IPL"],
+    CricketEvents.T20_WC.value: [
         # "ICC",
         # "T20WorldCup",
         # "ajarrodkimber",
@@ -120,11 +94,49 @@ BY_EVENT = {
         # "IndianMourinho",
         # "mroller98",
     ],
-    Events.NZ_TOUR_OF_INDIA.value: [],
-    Events.SYED_MUSHTAQ_ALI_TROPHY.value: [
+    CricketEvents.NZ_TOUR_OF_INDIA.value: [],
+    CricketEvents.SYED_MUSHTAQ_ALI_TROPHY.value: [
         "BCCIdomestic",
         "KrishnaKRM",
     ],
+}
+
+BY_FOOTBALL_EVENT = {
+    FootballEvents.ENGLISH_PREMIER_LEAGUE.value: [
+        "premierleague",
+        "OfficialFPL",
+        "SkySportsPL",
+        "SkySportsStatto",
+        "OptaJoe",
+        "FFScout",
+        "TrollFootball",
+        "footballltrolls",
+        "footyhumour",
+        "OptaJoke",
+        "Squawka",
+        "SquawkaNews",
+        "StatmanDave",
+        "EBL2017",
+        "henrywinter",
+        "CursedFootball",
+        "DeludedBrendan",
+        "LetsTalk_FPL",
+        "Zonal_Marking",
+        "melissareddy_",
+        "MiguelDelaney",
+        "GaryLineker",
+        "BBCMOTD",
+        "xGPhilosophy",
+        "vaibhardwaj",
+        "Tactical_Times",
+        "PremLeaguePanel",
+    ],
+    FootballEvents.INDIAN_SUPER_LEAGUE.value: [],
+}
+
+BY_EVENT = {
+    **BY_CRICKET_EVENT,
+    **BY_FOOTBALL_EVENT,
 }
 
 BY_IPL_TEAM = {
@@ -266,6 +278,11 @@ BY_EPL_TEAM = {
     EPLTeams.WOL.value: ["Wolves", "TimSpiers", "LiamKeen_Star"],
 }
 
+BY_ISL_TEAM = {
+    ISLTeams.GOA.value: [],
+    ISLTeams.MUM.value: [],
+}
+
 BY_F1_TEAM = {
     F1Teams.ALFA_ROMEO.value: ["alfaromeoracing"],
     F1Teams.ALPHATAURI.value: ["AlphaTauriF1"],
@@ -284,6 +301,7 @@ BY_TEAM = {
     **BY_T20_WC_TEAM,
     **BY_BILATERAL_SERIES_TEAMS,
     **BY_EPL_TEAM,
+    **BY_ISL_TEAM,
     **BY_F1_TEAM,
 }
 

@@ -1,7 +1,14 @@
 import re
 from typing import Dict, Optional
 
-from .constants import Events, F1Teams, Sports
+from .constants import (
+    CricketEvents,
+    EPLTeamsList,
+    F1Teams,
+    FootballEvents,
+    ISLTeamsList,
+    Sports,
+)
 
 
 class BaseSportTwitter:
@@ -40,7 +47,7 @@ class TwitterSportClass(TwitterFactory):
 
 class CricketTwitter(BaseSportTwitter):
     TEAMS_REGEX = r"(?P<team1>[a-zA-Z-]+)-vs-(?P<team2>[a-zA-Z-]+)-"
-    DEFAULT_EVENT = Events.T20_WC.value
+    DEFAULT_EVENT = CricketEvents.NZ_TOUR_OF_INDIA.value
 
     def __init__(self, sport: str, event: Optional[str] = None, **kwargs):
         super().__init__(sport, **kwargs)
@@ -49,6 +56,14 @@ class CricketTwitter(BaseSportTwitter):
 
 class FootballTwitter(BaseSportTwitter):
     TEAMS_REGEX = r"(?P<team1>[a-zA-Z-]+)-vs-(?P<team2>[a-zA-Z-]+)"
+
+    def __init__(self, sport: str, match: Optional[str] = None, **kwargs):
+        super().__init__(sport, **kwargs)
+        teams = self.get_teams_from_match(match)
+        if teams.get("team1") in EPLTeamsList or teams.get("team2") in EPLTeamsList:
+            self.event = FootballEvents.ENGLISH_PREMIER_LEAGUE.value
+        elif teams.get("team1") in ISLTeamsList or teams.get("team2") in ISLTeamsList:
+            self.event = FootballEvents.INDIAN_SUPER_LEAGUE.value
 
 
 class F1Twitter(BaseSportTwitter):
