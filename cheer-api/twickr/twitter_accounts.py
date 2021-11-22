@@ -183,7 +183,7 @@ BY_EPL_TEAM = {
         "arsenalmoh8",
     ],
     EPLTeams.AVL.value: [
-        "AVFCOfficial",
+        # "AVFCOfficial",
         "greggevans40",
         "7500toholte",
         "VillaAnalytics",
