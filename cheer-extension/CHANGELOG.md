@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.12
+
+- Remove support for Syed Mushtaq Ali trophy
+
 ## 0.1.11
 
 - Forgot to add to list of supported events 🤦‍♂️
