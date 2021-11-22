@@ -267,8 +267,14 @@ BY_EPL_TEAM = {
 }
 
 BY_ISL_TEAM = {
+    ISLTeams.ATK.value: [],
+    ISLTeams.BEN.value: [],
+    ISLTeams.EBE.value: [],
     ISLTeams.GOA.value: [],
+    ISLTeams.JAM.value: [],
+    ISLTeams.KER.value: [],
     ISLTeams.MUM.value: [],
+    ISLTeams.NEU.value: [],
 }
 
 BY_F1_TEAM = {

@@ -83,8 +83,14 @@ EPLTeamsList = [team.value for team in EPLTeams]
 
 
 class ISLTeams(Enum):
-    MUM = "mumbai-city"
+    ATK = "atkmb"
+    BEN = "bengaluru"
+    EBE = "east-bengal"
     GOA = "goa"
+    JAM = "jamshedpur"
+    KER = "kerala-blasters"
+    MUM = "mumbai-city"
+    NEU = "northeast-united"
 
 
 ISLTeamsList = [team.value for team in ISLTeams]
