@@ -126,7 +126,10 @@ BY_FOOTBALL_EVENT = {
         "Tactical_Times",
         "PremLeaguePanel",
     ],
-    FootballEvents.INDIAN_SUPER_LEAGUE.value: [],
+    FootballEvents.INDIAN_SUPER_LEAGUE.value: [
+        "IndSuperLeague",
+        "harithoyakkat",
+    ],
 }
 
 BY_EVENT = {
@@ -267,14 +270,14 @@ BY_EPL_TEAM = {
 }
 
 BY_ISL_TEAM = {
-    ISLTeams.ATK.value: [],
-    ISLTeams.BEN.value: [],
-    ISLTeams.EBE.value: [],
-    ISLTeams.GOA.value: [],
-    ISLTeams.JAM.value: [],
-    ISLTeams.KER.value: [],
-    ISLTeams.MUM.value: [],
-    ISLTeams.NEU.value: [],
+    ISLTeams.ATK.value: ["atkmohunbaganfc"],
+    ISLTeams.BEN.value: ["bengalurufc", "westblockblues"],
+    ISLTeams.EBE.value: ["sc_eastbengal"],
+    ISLTeams.GOA.value: ["FCGoaOfficial"],
+    ISLTeams.JAM.value: ["JamshedpurFC"],
+    ISLTeams.KER.value: ["KeralaBlasters"],
+    ISLTeams.MUM.value: ["MumbaiCityFC"],
+    ISLTeams.NEU.value: ["NEUtdFC"],
 }
 
 BY_F1_TEAM = {
