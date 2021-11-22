@@ -14,7 +14,6 @@ class CricketEvents(Enum):
     IPL = "indian-premier-league"
     T20_WC = "icc-mens-t20-world-cup"
     NZ_TOUR_OF_INDIA = "new-zealand-tour-of-india-202122"
-    SYED_MUSHTAQ_ALI_TROPHY = "syed-mushtaq-ali-trophy"
 
 
 class FootballEvents(Enum):
@@ -55,13 +54,6 @@ class T20WCTeams(Enum):
     SCO = "scotland"
     SL = "sri-lanka"
     WI = "west-indies"
-
-
-class SyedMushtaqAliTrophyTeams(Enum):
-    TN = "tamil-nadu"
-    HYD = "hyderabad"
-    VID = "vidarbha"
-    KTKA = "karnataka"
 
 
 class EPLTeams(Enum):

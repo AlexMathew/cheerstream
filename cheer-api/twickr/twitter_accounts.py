@@ -8,7 +8,6 @@ from .constants import (
     FootballEvents,
     ISLTeams,
     Sports,
-    SyedMushtaqAliTrophyTeams,
 )
 
 BY_SPORT = {
@@ -95,10 +94,6 @@ BY_CRICKET_EVENT = {
         # "mroller98",
     ],
     CricketEvents.NZ_TOUR_OF_INDIA.value: [],
-    CricketEvents.SYED_MUSHTAQ_ALI_TROPHY.value: [
-        "BCCIdomestic",
-        "KrishnaKRM",
-    ],
 }
 
 BY_FOOTBALL_EVENT = {
@@ -172,13 +167,6 @@ BY_T20_WC_TEAM = {
 BY_BILATERAL_SERIES_TEAMS = {
     CricketBilateralSeriesTeams.IND.value: ["BCCI", "indiancricnews"],
     CricketBilateralSeriesTeams.NZ.value: ["BLACKCAPS"],
-}
-
-BY_SYED_MUSHTAQ_ALI_TROPHY_TEAMS = {
-    SyedMushtaqAliTrophyTeams.HYD.value: [],
-    SyedMushtaqAliTrophyTeams.KTKA.value: ["RanjiKarnataka", "doddaganesha"],
-    SyedMushtaqAliTrophyTeams.TN.value: [],
-    SyedMushtaqAliTrophyTeams.VID.value: [],
 }
 
 BY_EPL_TEAM = {
