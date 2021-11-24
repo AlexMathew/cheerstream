@@ -36,7 +36,7 @@ BY_SPORT = {
         "lukesmithf1",
         "wearetherace",
         "kunalashah",
-        "f1niharika",
+        "F1Niharika",
         "adamcooperf1",
         "LightsOutF1Blog",
         "HillF1",
@@ -272,12 +272,15 @@ BY_EPL_TEAM = {
 BY_ISL_TEAM = {
     ISLTeams.ATK.value: ["atkmohunbaganfc"],
     ISLTeams.BEN.value: ["bengalurufc", "westblockblues"],
+    ISLTeams.CHE.value: ["ChennaiyinFC", "supermachans"],
     ISLTeams.EBE.value: ["sc_eastbengal"],
     ISLTeams.GOA.value: ["FCGoaOfficial"],
+    ISLTeams.HYD.value: ["HydFCOfficial"],
     ISLTeams.JAM.value: ["JamshedpurFC"],
     ISLTeams.KER.value: ["KeralaBlasters"],
     ISLTeams.MUM.value: ["MumbaiCityFC"],
     ISLTeams.NEU.value: ["NEUtdFC"],
+    ISLTeams.ODI.value: ["OdishaFC"],
 }
 
 BY_F1_TEAM = {
