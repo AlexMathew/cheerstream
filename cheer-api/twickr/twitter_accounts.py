@@ -33,6 +33,11 @@ BY_SPORT = {
         "mohanstatsman",
         "UPStatsman",
         "anandvasu",
+        "Sudarshanan7",
+        "clutchplay",
+        "imRohit_SN",
+        "CricPrasen",
+        "CricketWithAsh",
     ],
     Sports.FOOTBALL.value: [],
     Sports.F1.value: [
