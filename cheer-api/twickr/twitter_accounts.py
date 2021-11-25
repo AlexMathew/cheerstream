@@ -27,6 +27,12 @@ BY_SPORT = {
         "IndianMourinho",
         "GlobalLeagues",
         "sreshthx",
+        "vikrantgupta73",
+        "cricsubhayan",
+        "BoriaMajumdar",
+        "mohanstatsman",
+        "UPStatsman",
+        "anandvasu",
     ],
     Sports.FOOTBALL.value: [],
     Sports.F1.value: [
@@ -129,6 +135,7 @@ BY_FOOTBALL_EVENT = {
     FootballEvents.INDIAN_SUPER_LEAGUE.value: [
         "IndSuperLeague",
         "harithoyakkat",
+        "OptaJeev",
     ],
 }
 
