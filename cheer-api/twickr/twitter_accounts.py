@@ -38,6 +38,9 @@ BY_SPORT = {
         "imRohit_SN",
         "CricPrasen",
         "CricketWithAsh",
+        "TheCricketArk",
+        "CricCrazyNIKS",
+        "cricketingview",
     ],
     Sports.FOOTBALL.value: [],
     Sports.F1.value: [
@@ -181,7 +184,7 @@ BY_T20_WC_TEAM = {
 
 BY_BILATERAL_SERIES_TEAMS = {
     CricketBilateralSeriesTeams.IND.value: ["BCCI", "indiancricnews"],
-    CricketBilateralSeriesTeams.NZ.value: ["BLACKCAPS"],
+    CricketBilateralSeriesTeams.NZ.value: ["BLACKCAPS", "JimmyNeesh"],
 }
 
 BY_EPL_TEAM = {
