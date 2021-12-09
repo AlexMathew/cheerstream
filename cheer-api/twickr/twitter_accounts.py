@@ -59,6 +59,9 @@ BY_SPORT = {
         "wtf1official",
         "PurePitWall",
         "F1Struggle",
+        "TommyWTF1",
+        "KeiraMeganF1",
+        "formularacers_",
     ],
 }
 
