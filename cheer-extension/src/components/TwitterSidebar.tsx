@@ -66,7 +66,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
 
   const addToStorage = (tweetId: string) => {
     const tweetIds: string[] = getExistingTweetsFromStorage();
-    const updatedTweetIds: string[] = [...tweetIds.slice(-9), tweetId];
+    const updatedTweetIds: string[] = [...tweetIds.slice(-4), tweetId];
     localStorage.setItem(localStorageKey, JSON.stringify(updatedTweetIds));
   };
 
