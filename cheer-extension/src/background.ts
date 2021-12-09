@@ -39,7 +39,7 @@ chrome.runtime.onMessage.addListener((message: ChromeMessage) => {
       ga('send', 'event', 'sidebar', message.data.event, {
         nonInteraction: true,
       });
-      posthog.capture('sidebar_loaded', { event: message.data.event });
+      posthog.capture('sidebar_loaded', { matchEvent: message.data.event });
       break;
     case MESSAGE_ACTIONS.GA_TWEET_EMBEDDED:
       console.log('Tweet embedded');
@@ -47,7 +47,7 @@ chrome.runtime.onMessage.addListener((message: ChromeMessage) => {
         nonInteraction: true,
       });
       posthog.capture('tweet_embedded', {
-        event: message.data.event,
+        matchEvent: message.data.event,
         tweetId: message.data.tweetId,
       });
       break;
