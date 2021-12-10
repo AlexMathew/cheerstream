@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ContentScript from './components/ContentScript';
+import './content.css';
 
 const reactRoot: HTMLDivElement = document.createElement('div');
 reactRoot.classList.add('twickr-root');

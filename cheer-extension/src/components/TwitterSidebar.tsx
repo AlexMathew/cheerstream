@@ -46,6 +46,8 @@ function getSidebarWidth() {
 
 const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
   const [tweets, setTweets] = useState<string[]>([]);
+  const [tweetScrollPosition, setTweetScrollPosition] = useState<number>(0);
+  const TWEET_COUNT = 3;
   const eventDetails: EventDetails = getEventAndMatchDetails(
     document.location.pathname,
   );
@@ -115,32 +117,81 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
 
   const poweredByWidth = getSidebarWidth();
 
+  const shouldShowTweet = (tweetIndex: number) => {
+    return (
+      tweetIndex >= tweetScrollPosition &&
+      tweetIndex < tweetScrollPosition + TWEET_COUNT
+    );
+  };
+
+  const goNewer = () => {
+    let newScrollPosition = tweetScrollPosition - TWEET_COUNT;
+    newScrollPosition = newScrollPosition > 0 ? newScrollPosition : 0;
+    setTweetScrollPosition(newScrollPosition);
+  };
+
+  const goOlder = () => {
+    const newScrollPosition = tweetScrollPosition + TWEET_COUNT;
+    setTweetScrollPosition(newScrollPosition);
+  };
+
+  const showSeeNewer = tweets.length > 0 && tweetScrollPosition != 0;
+  const showSeeOlder =
+    tweets.length > TWEET_COUNT &&
+    tweetScrollPosition < tweets.length - TWEET_COUNT;
+
+  const tweetsSection = (
+    <>
+      {showSeeNewer ? (
+        <a
+          className="twickr-sidebar-see-button twickr-sidebar-see-newer-button"
+          onClick={goNewer}
+        >
+          See newer tweets ⬆
+        </a>
+      ) : null}
+      {tweets.map((tweet, tweetIndex) => (
+        <div
+          className={`twickr-sidebar-${tweet}`}
+          key={tweet}
+          style={{ display: shouldShowTweet(tweetIndex) ? 'block' : 'none' }}
+        ></div>
+      ))}
+      {showSeeOlder ? (
+        <a
+          className="twickr-sidebar-see-button twickr-sidebar-see-older-button"
+          onClick={goOlder}
+        >
+          See older tweets ⬇
+        </a>
+      ) : null}
+    </>
+  );
+
+  const tweetsPlaceholder = (
+    <div
+      className="twickr-sidebar-no-tweets"
+      style={{
+        position: 'absolute',
+        top: 0,
+        height: '20px',
+        width: poweredByWidth,
+        fontWeight: 'bold',
+        background: 'whitesmoke',
+        boxShadow: '0 8px 10px -6px black',
+      }}
+    >
+      Waiting for live tweets to come in
+    </div>
+  );
+
   return (
     <>
       <div
         className="twickr-sidebar"
         style={{ height: 'inherit', overflowY: 'scroll' }}
       >
-        {tweets.length > 0 ? (
-          tweets.map((tweet) => (
-            <div className={`twickr-sidebar-${tweet}`} key={tweet}></div>
-          ))
-        ) : (
-          <div
-            className="twickr-sidebar-no-tweets"
-            style={{
-              position: 'absolute',
-              top: 0,
-              height: '20px',
-              width: poweredByWidth,
-              fontWeight: 'bold',
-              background: 'whitesmoke',
-              boxShadow: '0 8px 10px -6px black',
-            }}
-          >
-            Waiting for live tweets to come in
-          </div>
-        )}
+        {tweets.length > 0 ? tweetsSection : tweetsPlaceholder}
       </div>
       <div
         className="twickr-sidebar-powered-by"

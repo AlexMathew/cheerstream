@@ -1,0 +1,23 @@
+.twickr-sidebar-see-button {
+  display: inline-block;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: small;
+  color: black;
+  background-color: whitesmoke;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.twickr-sidebar-see-button:hover {
+  background-color: lightgrey;
+}
+
+.twickr-sidebar-see-older-button {
+  margin-bottom: 32px;
+}
