@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.13
+
+- Limit number of tweets shown at a time. Scrollable with the "See Newer" and "See Older"
+- Reduce number of persisted tweets
+- Change the key name for the match in analytics events
+
 ## 0.1.12
 
 - Remove support for Syed Mushtaq Ali trophy
