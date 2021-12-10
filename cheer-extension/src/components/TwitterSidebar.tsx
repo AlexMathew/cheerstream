@@ -147,7 +147,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
           className="twickr-sidebar-see-button twickr-sidebar-see-newer-button"
           onClick={goNewer}
         >
-          See newer ⬆
+          See Newer ⬆
         </a>
       ) : null}
       {tweets.map((tweet, tweetIndex) => (
@@ -162,7 +162,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
           className="twickr-sidebar-see-button twickr-sidebar-see-older-button"
           onClick={goOlder}
         >
-          See older ⬇
+          See Older ⬇
         </a>
       ) : null}
     </>
