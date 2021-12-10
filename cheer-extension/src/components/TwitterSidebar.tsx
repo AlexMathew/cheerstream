@@ -47,7 +47,7 @@ function getSidebarWidth() {
 const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
   const [tweets, setTweets] = useState<string[]>([]);
   const [tweetScrollPosition, setTweetScrollPosition] = useState<number>(0);
-  const TWEET_COUNT = 3;
+  const TWEET_COUNT = 25;
   const eventDetails: EventDetails = getEventAndMatchDetails(
     document.location.pathname,
   );
@@ -147,7 +147,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
           className="twickr-sidebar-see-button twickr-sidebar-see-newer-button"
           onClick={goNewer}
         >
-          See newer tweets ⬆
+          See newer ⬆
         </a>
       ) : null}
       {tweets.map((tweet, tweetIndex) => (
@@ -162,7 +162,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
           className="twickr-sidebar-see-button twickr-sidebar-see-older-button"
           onClick={goOlder}
         >
-          See older tweets ⬇
+          See older ⬇
         </a>
       ) : null}
     </>
