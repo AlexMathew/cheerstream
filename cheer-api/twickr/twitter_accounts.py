@@ -62,6 +62,7 @@ BY_SPORT = {
         "TommyWTF1",
         "KeiraMeganF1",
         "formularacers_",
+        "EliGP",
     ],
 }
 
