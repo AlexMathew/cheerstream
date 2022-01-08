@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.14
+
+- Going on hiatus for a bit
+
 ## 0.1.13
 
 - Limit number of tweets shown at a time. Scrollable with the "See Newer" and "See Older"

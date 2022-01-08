@@ -74,7 +74,7 @@ const ContentScript: React.FC = () => {
 
       if (playerBase && !sidebarRef.current) {
         const liveStreamBadge = document.querySelector('.live-watermark-badge');
-        if (liveStreamBadge && shouldInsertSidebarForEvent()) {
+        if ((liveStreamBadge && shouldInsertSidebarForEvent()) || false) {
           insertTweetSidebar(playerBase);
           setSidebarAdded(true);
         }
@@ -83,14 +83,14 @@ const ContentScript: React.FC = () => {
         closeSocket();
       }
     });
-    setTimeout(
-      () =>
-        observer.observe(document, {
-          childList: true,
-          subtree: true,
-        }),
-      2 * 1000,
-    );
+    // setTimeout(
+    //   () =>
+    //     observer.observe(document, {
+    //       childList: true,
+    //       subtree: true,
+    //     }),
+    //   2 * 1000,
+    // );
   }, []);
 
   return <></>;

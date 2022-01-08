@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Twickr for Hotstar",
+  "name": "Twickr for Hotstar [ON HIATUS]",
   "short_name": "Twickr",
-  "version": "0.1.13",
-  "description": "Add live tweets to your sports streams on Hotstar",
+  "version": "0.1.14",
+  "description": "[TWICKR IS ON HIATUS FOR A FEW MONTHS] Add live tweets to your sports streams on Hotstar",
   "icons": {
     "192": "icons/logo192.png"
   },
