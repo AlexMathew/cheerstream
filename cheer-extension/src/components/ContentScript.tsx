@@ -54,6 +54,8 @@ const shouldInsertSidebarForEvent = (): boolean => {
   const fallbackSportTag: string =
     document.querySelector('.tag-holder .tag')?.textContent?.toLowerCase() ||
     '';
+  console.log(eventDetails);
+  console.log(fallbackSportTag);
 
   return (
     SUPPORTED_SPORTS.includes(eventDetails.sport) ||
@@ -73,8 +75,9 @@ const ContentScript: React.FC = () => {
       const playerBase: Node | null = getByXpath(`//div[@class="player-base"]`);
 
       if (playerBase && !sidebarRef.current) {
-        const liveStreamBadge = document.querySelector('.live-watermark-badge');
-        if ((liveStreamBadge && shouldInsertSidebarForEvent()) || false) {
+        const liveStreamBadge =
+          document.querySelector('.live-watermark-badge') || true; // TODO: Remove fallback
+        if (liveStreamBadge && shouldInsertSidebarForEvent()) {
           insertTweetSidebar(playerBase);
           setSidebarAdded(true);
         }
@@ -83,14 +86,14 @@ const ContentScript: React.FC = () => {
         closeSocket();
       }
     });
-    // setTimeout(
-    //   () =>
-    //     observer.observe(document, {
-    //       childList: true,
-    //       subtree: true,
-    //     }),
-    //   2 * 1000,
-    // );
+    setTimeout(
+      () =>
+        observer.observe(document, {
+          childList: true,
+          subtree: true,
+        }),
+      2 * 1000,
+    );
   }, []);
 
   return <></>;
