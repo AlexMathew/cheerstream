@@ -11,7 +11,8 @@ class Sports(Enum):
 
 
 class CricketEvents(Enum):
-    IPL = "indian-premier-league"
+    IPL = "tata-ipl-2022"
+    IPL_ORIGINAL = "indian-premier-league"
     T20_WC = "icc-mens-t20-world-cup"
     NZ_TOUR_OF_INDIA = "new-zealand-tour-of-india-202122"
 
@@ -24,7 +25,9 @@ class FootballEvents(Enum):
 class IPLTeams(Enum):
     CSK = "chennai-super-kings"
     DC = "delhi-capitals"
+    GT = "gujarat-titans"
     KKR = "kolkata-knight-riders"
+    LSG = "lucknow-super-giants"
     MI = "mumbai-indians"
     PBKS = "punjab-kings"
     RCB = "royal-challengers-bangalore"

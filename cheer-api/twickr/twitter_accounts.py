@@ -6,6 +6,7 @@ from .constants import (
     EPLTeams,
     F1Teams,
     FootballEvents,
+    IPLTeams,
     ISLTeams,
     Sports,
 )
@@ -41,6 +42,10 @@ BY_SPORT = {
         "TheCricketArk",
         "CricCrazyNIKS",
         "cricketingview",
+        "ajarrodkimber",
+        "im_sandipan",
+        "cricvizanalyst",
+        "OptaJeev",
     ],
     Sports.FOOTBALL.value: [],
     Sports.F1.value: [
@@ -63,11 +68,13 @@ BY_SPORT = {
         "KeiraMeganF1",
         "formularacers_",
         "EliGP",
+        "janci1612",
     ],
 }
 
 BY_CRICKET_EVENT = {
-    # CricketEvents.IPL.value: ["IPL"],
+    CricketEvents.IPL.value: ["IPL"],
+    CricketEvents.IPL_ORIGINAL.value: ["IPL"],
     CricketEvents.T20_WC.value: [
         # "ICC",
         # "T20WorldCup",
@@ -147,7 +154,7 @@ BY_FOOTBALL_EVENT = {
     FootballEvents.INDIAN_SUPER_LEAGUE.value: [
         "IndSuperLeague",
         "harithoyakkat",
-        "OptaJeev",
+        # "OptaJeev",
     ],
 }
 
@@ -157,14 +164,16 @@ BY_EVENT = {
 }
 
 BY_IPL_TEAM = {
-    # IPLTeams.CSK.value: ["ChennaiIPL"],
-    # IPLTeams.DC.value: ["DelhiCapitals"],
-    # IPLTeams.KKR.value: ["KKRiders"],
-    # IPLTeams.MI.value: ["mipaltan"],
-    # IPLTeams.PBKS.value: ["PunjabKingsIPL"],
-    # IPLTeams.RCB.value: ["RCBTweets"],
-    # IPLTeams.RR.value: ["rajasthanroyals"],
-    # IPLTeams.SRH.value: ["SunRisers"],
+    IPLTeams.CSK.value: ["ChennaiIPL"],
+    IPLTeams.DC.value: ["DelhiCapitals"],
+    IPLTeams.GT.value: ["gujarat_titans"],
+    IPLTeams.KKR.value: ["KKRiders"],
+    IPLTeams.LSG.value: ["LucknowIPL"],
+    IPLTeams.MI.value: ["mipaltan"],
+    IPLTeams.PBKS.value: ["PunjabKingsIPL"],
+    IPLTeams.RCB.value: ["RCBTweets"],
+    IPLTeams.RR.value: ["rajasthanroyals"],
+    IPLTeams.SRH.value: ["SunRisers"],
 }
 
 BY_T20_WC_TEAM = {
