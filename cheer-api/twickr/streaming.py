@@ -1,6 +1,7 @@
 import json
 import os
 from datetime import datetime
+from time import sleep
 from typing import Any, Dict, List
 
 import requests
@@ -127,4 +128,5 @@ def run_stream():
         try:
             get_stream()
         except (ValueError, ChunkedEncodingError, ProtocolError):
+            sleep(2)
             continue
