@@ -1,13 +1,11 @@
 from itertools import chain
 
 from .constants import (
-    CricketBilateralSeriesTeams,
     CricketEvents,
     EPLTeams,
     F1Teams,
     FootballEvents,
     IPLTeams,
-    ISLTeams,
     Sports,
 )
 
@@ -46,6 +44,9 @@ BY_SPORT = {
         "im_sandipan",
         "cricvizanalyst",
         "OptaJeev",
+        "mroller98",
+        "vikramsathaye",
+        "CursedCricket__",
     ],
     Sports.FOOTBALL.value: [],
     Sports.F1.value: [
@@ -196,8 +197,8 @@ BY_T20_WC_TEAM = {
 }
 
 BY_BILATERAL_SERIES_TEAMS = {
-    CricketBilateralSeriesTeams.IND.value: ["BCCI", "indiancricnews"],
-    CricketBilateralSeriesTeams.NZ.value: ["BLACKCAPS", "JimmyNeesh"],
+    # CricketBilateralSeriesTeams.IND.value: ["BCCI", "indiancricnews"],
+    # CricketBilateralSeriesTeams.NZ.value: ["BLACKCAPS", "JimmyNeesh"],
 }
 
 BY_EPL_TEAM = {
@@ -241,7 +242,7 @@ BY_EPL_TEAM = {
         "AbsoluteChelsea",
     ],
     EPLTeams.CRY.value: ["CPFC", "mattwoosie", "alitheeagle1", "talkcpfc"],
-    EPLTeams.EVE.value: ["Everton", "paddy_boyland", "mightybluesyt"],
+    EPLTeams.EVE.value: ["Everton", "Paddy_Boyland", "mightybluesyt"],
     EPLTeams.LEE.value: ["LUFC", "philhay_", "joedonnohue", "LUFCDATA"],
     EPLTeams.LEI.value: ["LCFC", "robtannerlcfc", "TheSharpeEnd"],
     EPLTeams.LIV.value: [
@@ -298,17 +299,17 @@ BY_EPL_TEAM = {
 }
 
 BY_ISL_TEAM = {
-    ISLTeams.ATK.value: ["atkmohunbaganfc"],
-    ISLTeams.BEN.value: ["bengalurufc", "westblockblues"],
-    ISLTeams.CHE.value: ["ChennaiyinFC", "supermachans"],
-    ISLTeams.EBE.value: ["sc_eastbengal"],
-    ISLTeams.GOA.value: ["FCGoaOfficial"],
-    ISLTeams.HYD.value: ["HydFCOfficial"],
-    ISLTeams.JAM.value: ["JamshedpurFC"],
-    ISLTeams.KER.value: ["KeralaBlasters"],
-    ISLTeams.MUM.value: ["MumbaiCityFC"],
-    ISLTeams.NEU.value: ["NEUtdFC"],
-    ISLTeams.ODI.value: ["OdishaFC"],
+    # ISLTeams.ATK.value: ["atkmohunbaganfc"],
+    # ISLTeams.BEN.value: ["bengalurufc", "westblockblues"],
+    # ISLTeams.CHE.value: ["ChennaiyinFC", "supermachans"],
+    # ISLTeams.EBE.value: ["sc_eastbengal"],
+    # ISLTeams.GOA.value: ["FCGoaOfficial"],
+    # ISLTeams.HYD.value: ["HydFCOfficial"],
+    # ISLTeams.JAM.value: ["JamshedpurFC"],
+    # ISLTeams.KER.value: ["KeralaBlasters"],
+    # ISLTeams.MUM.value: ["MumbaiCityFC"],
+    # ISLTeams.NEU.value: ["NEUtdFC"],
+    # ISLTeams.ODI.value: ["OdishaFC"],
 }
 
 BY_F1_TEAM = {
@@ -326,10 +327,7 @@ BY_F1_TEAM = {
 
 BY_TEAM = {
     **BY_IPL_TEAM,
-    **BY_T20_WC_TEAM,
-    **BY_BILATERAL_SERIES_TEAMS,
     **BY_EPL_TEAM,
-    **BY_ISL_TEAM,
     **BY_F1_TEAM,
 }
 
