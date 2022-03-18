@@ -337,7 +337,7 @@ BY_TEAM = {
 def create_reverse_mapping(mapping):
     reverse_mapping = {}
     for group, accounts in mapping.items():
-        reverse_mapping.update({account: group for account in accounts})
+        reverse_mapping.update({account.lower(): group for account in accounts})
 
     return reverse_mapping
 

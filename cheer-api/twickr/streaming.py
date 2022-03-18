@@ -6,6 +6,9 @@ from typing import Any, Dict, List
 import requests
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
+from requests.exceptions import ChunkedEncodingError
+from urllib3.exceptions import ProtocolError
+
 from helpers.instances import redis as redis_instance
 
 from .constants import MOST_RECENT_TWEET_TIMESTAMP_KEY
@@ -78,6 +81,7 @@ def delete_rules(rules):
 
 
 def get_stream():
+    print("get_stream")
     resp = requests.get(
         "https://api.twitter.com/2/tweets/search/stream?user.fields=username&expansions=author_id",
         stream=True,
@@ -102,7 +106,7 @@ def process_tweet(tweet: Dict[str, Any]):
     author = list(filter(lambda user: user.get("id") == author_id, users))
     if author:
         author = author[0]
-        group = ACCOUNT_TO_GROUP_MAPPING.get(author.get("username", ""))
+        group = ACCOUNT_TO_GROUP_MAPPING.get(author.get("username", "").lower())
         if group:
             print(author.get("username", ""), group, tweet_id)
             async_to_sync(CHANNEL_LAYER.group_send)(
@@ -119,4 +123,8 @@ def run_stream():
     delete_rules(added_rules)
     rules = build_rules(ALL_ACCOUNTS)
     add_rules(rules)
-    get_stream()
+    while True:
+        try:
+            get_stream()
+        except (ValueError, ChunkedEncodingError, ProtocolError):
+            continue
