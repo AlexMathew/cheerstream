@@ -1,9 +1,9 @@
 // @ts-nocheck
-import posthog from 'posthog-js';
+// import posthog from 'posthog-js';
 import { MESSAGE_ACTIONS } from './constants';
 import { ChromeMessage } from './types';
 
-// (function (i, s, o, r, a, m) {
+// (function (i, s, o, g, r, a, m) {
 //   i['GoogleAnalyticsObject'] = r;
 //   (i[r] =
 //     i[r] ||
@@ -13,12 +13,13 @@ import { ChromeMessage } from './types';
 //     (i[r].l = 1 * new Date());
 //   (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
 //   a.async = 1;
-//   a.src = chrome.runtime.getURL("js/analytics.js");
+//   a.src = g;
 //   m.parentNode.insertBefore(a, m);
 // })(
 //   window,
 //   document,
 //   'script',
+//   'https://www.google-analytics.com/analytics.js',
 //   'ga',
 // );
 
@@ -31,10 +32,40 @@ import { ChromeMessage } from './types';
 //   api_host: process.env.POSTHOG_API_HOST,
 // });
 
+const GA_ID = 'UA-210868356-1';
+
+async function postData(url = '', data = {}) {
+  const response = await fetch(url, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(data),
+  });
+  return response;
+}
+
+const registerEvent = async (
+  category: string,
+  action: string = '',
+  label: string = '',
+) => {
+  const url = `https://www.google-analytics.com/collect?v=1&t=event&tid=${GA_ID}&cid=555&ec=${category}&ea=${action}&el=${label}`;
+  postData(url).then((resp) => {
+    console.log(resp.ok);
+  });
+};
+
 chrome.runtime.onMessage.addListener((message: ChromeMessage) => {
   switch (message.action) {
     case MESSAGE_ACTIONS.GA_SIDEBAR_LOADED:
       console.log('Sidebar loaded - ', message.data);
+      registerEvent('sidebar_connect', message.data.event);
       // ga('send', 'event', 'sidebar', message.data.event, {
       //   nonInteraction: true,
       // });
@@ -42,6 +73,7 @@ chrome.runtime.onMessage.addListener((message: ChromeMessage) => {
       break;
     case MESSAGE_ACTIONS.GA_TWEET_EMBEDDED:
       console.log('Tweet embedded');
+      registerEvent('tweet_embed', message.data.event, message.data.tweetId);
       // ga('send', 'event', 'tweet', 'embed', {
       //   nonInteraction: true,
       // });
@@ -52,6 +84,7 @@ chrome.runtime.onMessage.addListener((message: ChromeMessage) => {
       break;
     case MESSAGE_ACTIONS.GA_SIDEBAR_DISCONNECTED:
       console.log('Sidebar disconnected');
+      registerEvent('sidebar_disconnect', 'disconnect');
       // ga('send', 'event', 'sidebar', 'disconnect', {
       //   nonInteraction: true,
       // });
