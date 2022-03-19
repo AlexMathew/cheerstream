@@ -1511,9 +1511,9 @@
     picomatch "^2.2.2"
 
 "@sentry/types@^6.11.0":
-  version "6.14.0"
-  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.14.0.tgz#2cf63d0d616109d3a9b99fd27c51e3be1319fa96"
-  integrity sha512-7t1YyKO69lLru2WZVGWik6f59qf8J75wSg41Sk5SySvsd7hjcxbj1PWz61/5ndRStvbZmabiVcn76nI2JKyD5A==
+  version "6.18.2"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.18.2.tgz#f528fec8b75c19d5a6976004e71703184c6cf7be"
+  integrity sha512-WzpJf/Q5aORTzrSwer/As1NlO90dBAQpaHV2ikDDKqOyMWEgjKb5/4gh59p9gH8JMMnLetP1AvQel0fOj5UnUw==
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.2"
@@ -9429,10 +9429,10 @@ postcss@^8.2.15:
     picocolors "^1.0.0"
     source-map-js "^1.0.1"
 
-posthog-js@^1.16.1:
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.16.1.tgz#7077e3f72221c7c9757bc955ee7cf90bf79200ca"
-  integrity sha512-KnRPcifQGZ3UyNENnpL3xQHbU8MsP273So3+3afNGASh9fZzjPqj7Wb7SXblezzRqdHs/lM/gMbMx43rkdZJbQ==
+posthog-js@^1.18.0:
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.18.0.tgz#91b063faf8c412472915773b5ab46dae225982ef"
+  integrity sha512-yMJKHfzF8U4dssaqf/ghNS0/Kjgni9P7Xu1b3gN4bXKw2D4drhDq7fUxSunU3kV65o/jH3UCohqS24Ad2rll0A==
   dependencies:
     "@sentry/types" "^6.11.0"
     fflate "^0.4.1"
@@ -10265,9 +10265,9 @@ rollup@^1.31.1:
     acorn "^7.1.0"
 
 rrweb-snapshot@^1.1.7:
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/rrweb-snapshot/-/rrweb-snapshot-1.1.9.tgz#f8d0f560291a37dab00dc5ac6d9368f76208256f"
-  integrity sha512-kpoWi2gx1AmX2PZU8XNKMvIvh5WPSz9lKfyHs9GYvczYE2H7VNrmPf7+rDin8Y+HcJ9Tu7x9id4JOCD2PsSPQA==
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/rrweb-snapshot/-/rrweb-snapshot-1.1.13.tgz#fc15adb7eb6354c859c8d594f57b09e1f5bccdd8"
+  integrity sha512-lv4vBSJ5orBcRoJnjLvtly6cSsctC+TNm5orVzYRL9SH3LmtSpQ+wI4bw7eh4AcyKoUf0x4pe1Bn632GggmKWQ==
 
 rsvp@^4.8.4:
   version "4.8.5"
