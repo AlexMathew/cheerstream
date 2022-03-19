@@ -99,10 +99,12 @@ def get_stream():
             tweet = json.loads(line)
             if "connection_issue" in tweet:
                 print(tweet)
+                resp.close()
                 raise TooManyConnectionsError
             process_tweet(tweet)
             RECONNECT_BACKOFF_TIME = 5
         else:
+            RECONNECT_BACKOFF_TIME = 5
             print(line)
 
 
