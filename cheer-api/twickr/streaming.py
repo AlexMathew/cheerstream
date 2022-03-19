@@ -13,7 +13,7 @@ from urllib3.exceptions import ProtocolError
 from helpers.instances import redis as redis_instance
 
 from .constants import MOST_RECENT_TWEET_TIMESTAMP_KEY
-from .exceptions import TooManyConnectionsError
+from .exceptions import ManyConsecutiveBlanksError, TooManyConnectionsError
 from .twitter_accounts import ACCOUNT_TO_GROUP_MAPPING, ALL_ACCOUNTS
 
 TWITTER_BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN")
@@ -85,7 +85,8 @@ def delete_rules(rules):
 
 def get_stream():
     global RECONNECT_BACKOFF_TIME
-    print("get_stream")
+    blank_count = 0
+    print("\nget_stream")
     resp = requests.get(
         "https://api.twitter.com/2/tweets/search/stream?user.fields=username&expansions=author_id",
         stream=True,
@@ -103,9 +104,15 @@ def get_stream():
                 raise TooManyConnectionsError
             process_tweet(tweet)
             RECONNECT_BACKOFF_TIME = 5
+            blank_count = 0
         else:
             RECONNECT_BACKOFF_TIME = 5
+            blank_count += 1
             print(line)
+            if blank_count > 10:
+                resp.close()
+                sleep(RECONNECT_BACKOFF_TIME)
+                raise ManyConsecutiveBlanksError
 
 
 def process_tweet(tweet: Dict[str, Any]):
@@ -145,8 +152,9 @@ def run_stream():
             ChunkedEncodingError,
             ProtocolError,
             TooManyConnectionsError,
-        ):
-            print("sleep -", RECONNECT_BACKOFF_TIME)
+            ManyConsecutiveBlanksError,
+        ) as e:
+            print(f"Sleep - {RECONNECT_BACKOFF_TIME}; Restarted because of {type(e)}")
             sleep(RECONNECT_BACKOFF_TIME)
             RECONNECT_BACKOFF_TIME += 5
             continue
