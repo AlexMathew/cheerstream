@@ -13,6 +13,7 @@ from urllib3.exceptions import ProtocolError
 from helpers.instances import redis as redis_instance
 
 from .constants import MOST_RECENT_TWEET_TIMESTAMP_KEY
+from .exceptions import TooManyConnectionsError
 from .twitter_accounts import ACCOUNT_TO_GROUP_MAPPING, ALL_ACCOUNTS
 
 TWITTER_BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN")
@@ -21,6 +22,7 @@ STREAM_RULE_MAX_LENGTH = 512
 STREAM_RULE_CONNECTOR_LENGTH = len(" OR from:")
 
 CHANNEL_LAYER = get_channel_layer()
+RECONNECT_BACKOFF_TIME = 5
 
 
 def build_rules(accounts: List[str]) -> List[Dict[str, str]]:
@@ -82,6 +84,7 @@ def delete_rules(rules):
 
 
 def get_stream():
+    global RECONNECT_BACKOFF_TIME
     print("get_stream")
     resp = requests.get(
         "https://api.twitter.com/2/tweets/search/stream?user.fields=username&expansions=author_id",
@@ -94,12 +97,19 @@ def get_stream():
     for line in resp.iter_lines():
         if line:
             tweet = json.loads(line)
+            if "connection_issue" in tweet:
+                print(tweet)
+                raise TooManyConnectionsError
             process_tweet(tweet)
+            RECONNECT_BACKOFF_TIME = 5
+        else:
+            print(line)
 
 
 def process_tweet(tweet: Dict[str, Any]):
     tweet_id = tweet.get("data", {}).get("id")
     if not tweet_id:
+        print(tweet)
         return
 
     author_id = tweet.get("data", {}).get("author_id", "")
@@ -120,6 +130,7 @@ def process_tweet(tweet: Dict[str, Any]):
 
 
 def run_stream():
+    global RECONNECT_BACKOFF_TIME
     added_rules = get_rules()
     delete_rules(added_rules)
     rules = build_rules(ALL_ACCOUNTS)
@@ -127,6 +138,13 @@ def run_stream():
     while True:
         try:
             get_stream()
-        except (ValueError, ChunkedEncodingError, ProtocolError):
-            sleep(2)
+        except (
+            ValueError,
+            ChunkedEncodingError,
+            ProtocolError,
+            TooManyConnectionsError,
+        ):
+            print("sleep -", RECONNECT_BACKOFF_TIME)
+            sleep(RECONNECT_BACKOFF_TIME)
+            RECONNECT_BACKOFF_TIME += 5
             continue
