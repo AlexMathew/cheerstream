@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.0
+
+- We back!
+- Migrate to manifest v3
+
 ## 0.1.14
 
 - Going on hiatus for a bit
