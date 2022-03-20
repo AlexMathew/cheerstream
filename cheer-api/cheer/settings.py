@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
     "gzi0vv65kg.execute-api.us-east-1.amazonaws.com",
     "api.twickr.live",
     "172.31.90.2",
+    "172.31.27.57",
     "twickr-server-34418577.us-east-1.elb.amazonaws.com",
     "twickr-server-lb-752318551.us-east-1.elb.amazonaws.com",
     "ws.twickr.live",
