@@ -153,8 +153,8 @@ BY_FOOTBALL_EVENT = {
         "PremLeaguePanel",
     ],
     FootballEvents.INDIAN_SUPER_LEAGUE.value: [
-        "IndSuperLeague",
-        "harithoyakkat",
+        # "IndSuperLeague",
+        # "harithoyakkat",
         # "OptaJeev",
     ],
 }
@@ -210,6 +210,7 @@ BY_EPL_TEAM = {
         "yankeegunner",
         "gunnerblog",
         "arsenalmoh8",
+        "AAllenSport",
     ],
     EPLTeams.AVL.value: [
         # "AVFCOfficial",
