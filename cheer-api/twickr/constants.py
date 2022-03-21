@@ -113,3 +113,6 @@ class F1Teams(Enum):
     MERCEDES = "mercedes"
     RED_BULL = "red_bull"
     WILLIAMS = "williams"
+
+
+PLACEHOLDER_KEEP_ALIVE = "placeholder_keep_alive"

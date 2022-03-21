@@ -1,6 +1,7 @@
 from itertools import chain
 
 from .constants import (
+    PLACEHOLDER_KEEP_ALIVE,
     CricketEvents,
     EPLTeams,
     F1Teams,
@@ -70,6 +71,12 @@ BY_SPORT = {
         "formularacers_",
         "EliGP",
         "janci1612",
+        "Harrison101HD",
+        "BatteryVoltas",
+    ],
+    PLACEHOLDER_KEEP_ALIVE: [
+        "JioCare",
+        "flipkartsupport",
     ],
 }
 
@@ -211,9 +218,10 @@ BY_EPL_TEAM = {
         "gunnerblog",
         "arsenalmoh8",
         "AAllenSport",
+        "jamesbenge",
     ],
     EPLTeams.AVL.value: [
-        # "AVFCOfficial",
+        "AVFCOfficial",
         "greggevans40",
         "7500toholte",
         "VillaAnalytics",
