@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+- Set maximum tweets in state to display on sidebar
+- Support minimizing tweet sidebar
+
 ## 0.2.0
 
 - We back!
