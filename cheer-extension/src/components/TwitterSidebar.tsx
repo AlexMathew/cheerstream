@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { EventDetails, getEventAndMatchDetails } from '../utils/details';
 import twickr from '../api/twickr';
 import { AxiosResponse } from 'axios';
@@ -46,8 +46,12 @@ function getSidebarWidth() {
 
 const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
   const [tweets, setTweets] = useState<string[]>([]);
+  const tweetsRef = useRef(tweets);
+  tweetsRef.current = tweets;
   const [tweetScrollPosition, setTweetScrollPosition] = useState<number>(0);
-  const TWEET_COUNT = 25;
+  const TWEET_COUNT_SHOWN_ON_SIDEBAR = 15;
+  const TWEET_COUNT_IN_STATE = 75;
+  const TWEET_COUNT_IN_STORAGE = 5;
   const eventDetails: EventDetails = getEventAndMatchDetails(
     document.location.pathname,
   );
@@ -68,12 +72,18 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
 
   const addToStorage = (tweetId: string) => {
     const tweetIds: string[] = getExistingTweetsFromStorage();
-    const updatedTweetIds: string[] = [...tweetIds.slice(-4), tweetId];
+    const updatedTweetIds: string[] = [
+      ...tweetIds.slice(1 - TWEET_COUNT_IN_STORAGE),
+      tweetId,
+    ];
     localStorage.setItem(localStorageKey, JSON.stringify(updatedTweetIds));
   };
 
   const processTweet = (tweetId: string, newTweet: boolean) => {
-    setTweets((tweets) => [tweetId, ...tweets]);
+    setTweets((tweets) => [
+      tweetId,
+      ...tweets.slice(0, TWEET_COUNT_IN_STATE - 1),
+    ]);
     if (newTweet) {
       addToStorage(tweetId);
     }
@@ -120,25 +130,26 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
   const shouldShowTweet = (tweetIndex: number) => {
     return (
       tweetIndex >= tweetScrollPosition &&
-      tweetIndex < tweetScrollPosition + TWEET_COUNT
+      tweetIndex < tweetScrollPosition + TWEET_COUNT_SHOWN_ON_SIDEBAR
     );
   };
 
   const goNewer = () => {
-    let newScrollPosition = tweetScrollPosition - TWEET_COUNT;
+    let newScrollPosition = tweetScrollPosition - TWEET_COUNT_SHOWN_ON_SIDEBAR;
     newScrollPosition = newScrollPosition > 0 ? newScrollPosition : 0;
     setTweetScrollPosition(newScrollPosition);
   };
 
   const goOlder = () => {
-    const newScrollPosition = tweetScrollPosition + TWEET_COUNT;
+    const newScrollPosition =
+      tweetScrollPosition + TWEET_COUNT_SHOWN_ON_SIDEBAR;
     setTweetScrollPosition(newScrollPosition);
   };
 
   const showSeeNewer = tweets.length > 0 && tweetScrollPosition != 0;
   const showSeeOlder =
-    tweets.length > TWEET_COUNT &&
-    tweetScrollPosition < tweets.length - TWEET_COUNT;
+    tweets.length > TWEET_COUNT_SHOWN_ON_SIDEBAR &&
+    tweetScrollPosition < tweets.length - TWEET_COUNT_SHOWN_ON_SIDEBAR;
 
   const tweetsSection = (
     <>
