@@ -75,8 +75,7 @@ const ContentScript: React.FC = () => {
       const playerBase: Node | null = getByXpath(`//div[@class="player-base"]`);
 
       if (playerBase && !sidebarRef.current) {
-        const liveStreamBadge =
-          document.querySelector('.live-watermark-badge') || true; // TODO: Remove fallback
+        const liveStreamBadge = document.querySelector('.live-watermark-badge');
         if (liveStreamBadge && shouldInsertSidebarForEvent()) {
           insertTweetSidebar(playerBase);
           setSidebarAdded(true);
