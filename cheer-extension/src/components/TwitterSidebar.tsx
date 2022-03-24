@@ -50,6 +50,8 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
   tweetsRef.current = tweets;
   const [tweetScrollPosition, setTweetScrollPosition] = useState<number>(0);
   const [showSidebar, setShowSidebar] = useState<boolean>(true);
+  const showSidebarRef = useRef(showSidebar);
+  showSidebarRef.current = showSidebar;
   const TWEET_COUNT_SHOWN_ON_SIDEBAR = 15;
   const TWEET_COUNT_IN_STATE = 75;
   const TWEET_COUNT_IN_STORAGE = 5;
@@ -97,6 +99,16 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
           tweetId,
         },
       });
+
+      if (!showSidebarRef.current) {
+        chrome.runtime.sendMessage<ChromeMessage>({
+          action: MESSAGE_ACTIONS.GA_TWEET_EMBEDDED_WHEN_MINIMIZED,
+          data: {
+            event: `${eventDetails.sport}-${eventDetails.event}-${eventDetails.match}`,
+            tweetId,
+          },
+        });
+      }
     }
   };
 
@@ -135,6 +147,12 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
     if (sidebarHolder) {
       sidebarHolder.style.width = '5%';
     }
+    chrome.runtime.sendMessage<ChromeMessage>({
+      action: MESSAGE_ACTIONS.GA_SIDEBAR_MINIMIZED,
+      data: {
+        event: `${eventDetails.sport}-${eventDetails.event}-${eventDetails.match}`,
+      },
+    });
   };
 
   const restoreSidebar = () => {
@@ -144,6 +162,12 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
     if (sidebarHolder) {
       sidebarHolder.style.width = '20%';
     }
+    chrome.runtime.sendMessage<ChromeMessage>({
+      action: MESSAGE_ACTIONS.GA_SIDEBAR_RESTORED,
+      data: {
+        event: `${eventDetails.sport}-${eventDetails.event}-${eventDetails.match}`,
+      },
+    });
   };
 
   const shouldShowTweet = (tweetIndex: number) => {

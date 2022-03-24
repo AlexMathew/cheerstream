@@ -82,6 +82,14 @@ chrome.runtime.onMessage.addListener((message: ChromeMessage) => {
       //   tweetId: message.data.tweetId,
       // });
       break;
+    case MESSAGE_ACTIONS.GA_TWEET_EMBEDDED_WHEN_MINIMIZED:
+      console.log('Tweet embedded when minimized');
+      registerEvent(
+        'tweet_embed_when_minimized',
+        message.data.event,
+        message.data.tweetId,
+      );
+      break;
     case MESSAGE_ACTIONS.GA_SIDEBAR_DISCONNECTED:
       console.log('Sidebar disconnected');
       registerEvent('sidebar_disconnect', 'disconnect');
@@ -89,6 +97,14 @@ chrome.runtime.onMessage.addListener((message: ChromeMessage) => {
       //   nonInteraction: true,
       // });
       // posthog.capture('sidebar_disconnected');
+      break;
+    case MESSAGE_ACTIONS.GA_SIDEBAR_MINIMIZED:
+      console.log('Sidebar minimized - ', message.data);
+      registerEvent('sidebar_minimized', message.data.event);
+      break;
+    case MESSAGE_ACTIONS.GA_SIDEBAR_RESTORED:
+      console.log('Sidebar restored - ', message.data);
+      registerEvent('sidebar_restored', message.data.event);
       break;
   }
 });
