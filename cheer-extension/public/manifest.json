@@ -19,12 +19,15 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["js/twitter_embed.js"],
+      "resources": ["js/twitter_embed.js", "icons/logo128.png"],
       "matches": ["https://hotstar.com/*", "https://www.hotstar.com/*"]
     }
   ],
   "permissions": [],
-  "host_permissions": ["https://www.google-analytics.com/*"],
+  "host_permissions": [
+    "https://www.google-analytics.com/*",
+    "http://localhost:8000/*"
+  ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   }

@@ -49,6 +49,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
   const tweetsRef = useRef(tweets);
   tweetsRef.current = tweets;
   const [tweetScrollPosition, setTweetScrollPosition] = useState<number>(0);
+  const [showSidebar, setShowSidebar] = useState<boolean>(true);
   const TWEET_COUNT_SHOWN_ON_SIDEBAR = 15;
   const TWEET_COUNT_IN_STATE = 75;
   const TWEET_COUNT_IN_STORAGE = 5;
@@ -127,6 +128,24 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
 
   const poweredByWidth = getSidebarWidth();
 
+  const minimizeSidebar = () => {
+    setShowSidebar(false);
+    const sidebarHolder: HTMLDivElement | null =
+      document.querySelector<HTMLDivElement>('.twickr-sidebar-holder');
+    if (sidebarHolder) {
+      sidebarHolder.style.width = '5%';
+    }
+  };
+
+  const restoreSidebar = () => {
+    setShowSidebar(true);
+    const sidebarHolder: HTMLDivElement | null =
+      document.querySelector<HTMLDivElement>('.twickr-sidebar-holder');
+    if (sidebarHolder) {
+      sidebarHolder.style.width = '20%';
+    }
+  };
+
   const shouldShowTweet = (tweetIndex: number) => {
     return (
       tweetIndex >= tweetScrollPosition &&
@@ -185,7 +204,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
       style={{
         position: 'absolute',
         top: 0,
-        height: '20px',
+        height: '25px',
         width: poweredByWidth,
         fontWeight: 'bold',
         background: 'whitesmoke',
@@ -196,28 +215,87 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
     </div>
   );
 
-  return (
+  const minimizedSidebar = (
     <>
       <div
         className="twickr-sidebar"
         style={{ height: 'inherit', overflowY: 'scroll' }}
       >
-        {tweets.length > 0 ? tweetsSection : tweetsPlaceholder}
+        <div
+          style={{
+            height: '25px',
+            background: 'whitesmoke',
+            color: 'black',
+            cursor: 'pointer',
+            fontSize: 'small',
+            fontWeight: 'bold',
+          }}
+          onClick={restoreSidebar}
+        >
+          &lt;&lt;
+        </div>
       </div>
       <div
         className="twickr-sidebar-powered-by"
         style={{
           position: 'absolute',
           bottom: 0,
-          height: '20px',
-          width: poweredByWidth,
-          fontWeight: 'bold',
           background: 'whitesmoke',
-          boxShadow: '0 -8px 10px -6px black',
         }}
       >
-        Powered by Twickr
+        <img src={chrome.runtime.getURL('icons/logo128.png')} />
       </div>
+    </>
+  );
+
+  return (
+    <>
+      <div
+        style={{ display: showSidebar ? 'block' : 'none', height: 'inherit' }}
+      >
+        <div
+          style={{
+            position: 'relative',
+            top: 0,
+            left: '-8%',
+            height: '25px',
+            background: 'whitesmoke',
+            color: 'black',
+            opacity: '50%',
+            cursor: 'pointer',
+            fontSize: 'small',
+            fontWeight: 'bold',
+            width: 'fit-content',
+            paddingLeft: '5px',
+            paddingRight: '5px',
+            zIndex: 100,
+          }}
+          onClick={minimizeSidebar}
+        >
+          &gt;&gt;
+        </div>
+        <div
+          className="twickr-sidebar"
+          style={{ height: 'inherit', overflowY: 'scroll' }}
+        >
+          {tweets.length > 0 ? tweetsSection : tweetsPlaceholder}
+        </div>
+        <div
+          className="twickr-sidebar-powered-by"
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            height: '20px',
+            width: poweredByWidth,
+            fontWeight: 'bold',
+            background: 'whitesmoke',
+            boxShadow: '0 -8px 10px -6px black',
+          }}
+        >
+          Powered by Twickr
+        </div>
+      </div>
+      {!showSidebar ? minimizedSidebar : ''}
     </>
   );
 };
