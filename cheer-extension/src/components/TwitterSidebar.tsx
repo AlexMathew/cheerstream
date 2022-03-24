@@ -260,14 +260,18 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
         </div>
       </div>
       <div
-        className="twickr-sidebar-powered-by"
+        className="twickr-sidebar-logo"
         style={{
           position: 'absolute',
           bottom: 0,
           background: 'whitesmoke',
+          width: 'inherit',
         }}
       >
-        <img src={chrome.runtime.getURL('icons/logo128.png')} />
+        <img
+          src={chrome.runtime.getURL('icons/logo128.png')}
+          style={{ width: '100%' }}
+        />
       </div>
     </>
   );
@@ -300,7 +304,7 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
         </div>
         <div
           className="twickr-sidebar"
-          style={{ height: 'inherit', overflowY: 'scroll' }}
+          style={{ height: 'inherit', overflowY: 'scroll', marginTop: '-25px' }}
         >
           {tweets.length > 0 ? tweetsSection : tweetsPlaceholder}
         </div>
