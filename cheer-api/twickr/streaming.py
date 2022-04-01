@@ -14,7 +14,7 @@ from helpers.instances import redis as redis_instance
 
 from .constants import MOST_RECENT_TWEET_TIMESTAMP_KEY
 from .exceptions import ManyConsecutiveBlanksError, TooManyConnectionsError
-from .twitter_accounts import ACCOUNT_TO_GROUP_MAPPING, ALL_ACCOUNTS
+from .twitter_accounts import ACCOUNT_TO_GROUPS_MAPPING, ALL_ACCOUNTS
 
 TWITTER_BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN")
 
@@ -126,18 +126,22 @@ def process_tweet(tweet: Dict[str, Any]):
     author = list(filter(lambda user: user.get("id") == author_id, users))
     if author:
         author = author[0]
-        group = ACCOUNT_TO_GROUP_MAPPING.get(author.get("username", "").lower())
-        if group:
-            print(
-                datetime.now().isoformat(), author.get("username", ""), group, tweet_id
-            )
-            async_to_sync(CHANNEL_LAYER.group_send)(
-                group, {"type": "event_message", "message": tweet_id}
-            )
-            redis_instance.set(
-                MOST_RECENT_TWEET_TIMESTAMP_KEY,
-                datetime.now().strftime("%Y %b %d, %A, %H:%M:%S"),
-            )
+        groups = ACCOUNT_TO_GROUPS_MAPPING.get(author.get("username", "").lower())
+        if groups:
+            for group in groups:
+                print(
+                    datetime.now().isoformat(),
+                    author.get("username", ""),
+                    group,
+                    tweet_id,
+                )
+                async_to_sync(CHANNEL_LAYER.group_send)(
+                    group, {"type": "event_message", "message": tweet_id}
+                )
+                redis_instance.set(
+                    MOST_RECENT_TWEET_TIMESTAMP_KEY,
+                    datetime.now().strftime("%Y %b %d, %A, %H:%M:%S"),
+                )
 
 
 def run_stream():

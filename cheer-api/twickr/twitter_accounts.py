@@ -1,4 +1,6 @@
+from collections import defaultdict
 from itertools import chain
+from typing import Dict, List
 
 from .constants import (
     PLACEHOLDER_KEEP_ALIVE,
@@ -358,26 +360,31 @@ BY_TEAM = {
 
 
 def create_reverse_mapping(mapping):
-    reverse_mapping = {}
+    reverse_mapping: Dict[str, List[str]] = defaultdict(list)
     for group, accounts in mapping.items():
-        reverse_mapping.update({account.lower(): group for account in accounts})
+        for account in accounts:
+            reverse_mapping[account.lower()].append(group)
 
     return reverse_mapping
 
 
-ACCOUNT_TO_GROUP_MAPPING = {
-    **create_reverse_mapping(BY_SPORT),
-    **create_reverse_mapping(BY_EVENT),
-    **create_reverse_mapping(BY_TEAM),
-}
+ACCOUNT_TO_GROUPS_MAPPING = create_reverse_mapping(
+    {
+        **BY_SPORT,
+        **BY_EVENT,
+        **BY_TEAM,
+    }
+)
 
 
 def get_all_accounts(mapping):
     return list(chain(*[accounts for accounts in mapping.values()]))
 
 
-ALL_ACCOUNTS = [
-    *get_all_accounts(BY_SPORT),
-    *get_all_accounts(BY_EVENT),
-    *get_all_accounts(BY_TEAM),
-]
+ALL_ACCOUNTS = list(
+    {
+        *get_all_accounts(BY_SPORT),
+        *get_all_accounts(BY_EVENT),
+        *get_all_accounts(BY_TEAM),
+    }
+)
