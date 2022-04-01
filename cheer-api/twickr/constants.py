@@ -35,6 +35,19 @@ class IPLTeams(Enum):
     SRH = "sunrisers-hyderabad"
 
 
+class IPLTeamsAbbrev(Enum):
+    CSK = "csk"
+    DC = "dc"
+    GT = "gt"
+    KKR = "kkr"
+    LSG = "lsg"
+    MI = "mi"
+    PBKS = "pbks"
+    RCB = "rcb"
+    RR = "rr"
+    SRH = "srh"
+
+
 class CricketBilateralSeriesTeams(Enum):
     IND = "india"
     NZ = "new-zealand"

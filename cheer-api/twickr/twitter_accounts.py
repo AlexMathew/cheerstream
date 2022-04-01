@@ -9,6 +9,7 @@ from .constants import (
     F1Teams,
     FootballEvents,
     IPLTeams,
+    IPLTeamsAbbrev,
     Sports,
 )
 
@@ -191,15 +192,25 @@ BY_EVENT = {
 
 BY_IPL_TEAM = {
     IPLTeams.CSK.value: ["ChennaiIPL"],
+    IPLTeamsAbbrev.CSK.value: ["ChennaiIPL"],
     IPLTeams.DC.value: ["DelhiCapitals"],
+    IPLTeamsAbbrev.DC.value: ["DelhiCapitals"],
     IPLTeams.GT.value: ["gujarat_titans"],
+    IPLTeamsAbbrev.GT.value: ["gujarat_titans"],
     IPLTeams.KKR.value: ["KKRiders"],
+    IPLTeamsAbbrev.KKR.value: ["KKRiders"],
     IPLTeams.LSG.value: ["LucknowIPL"],
+    IPLTeamsAbbrev.LSG.value: ["LucknowIPL"],
     IPLTeams.MI.value: ["mipaltan"],
+    IPLTeamsAbbrev.MI.value: ["mipaltan"],
     IPLTeams.PBKS.value: ["PunjabKingsIPL"],
+    IPLTeamsAbbrev.PBKS.value: ["PunjabKingsIPL"],
     IPLTeams.RCB.value: ["RCBTweets"],
+    IPLTeamsAbbrev.RCB.value: ["RCBTweets"],
     IPLTeams.RR.value: ["rajasthanroyals"],
+    IPLTeamsAbbrev.RR.value: ["rajasthanroyals"],
     IPLTeams.SRH.value: ["SunRisers"],
+    IPLTeamsAbbrev.SRH.value: ["SunRisers"],
 }
 
 BY_T20_WC_TEAM = {
