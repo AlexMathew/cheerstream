@@ -66,6 +66,7 @@ BY_SPORT = {
         "FarziCricketer",
         "probatsman",
         "ovshake42",
+        "internetumpire",
     ],
     Sports.FOOTBALL.value: [],
     Sports.F1.value: [
