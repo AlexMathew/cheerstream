@@ -127,7 +127,12 @@ const TwitterSidebar: React.FC<TwitterSidebarProps> = ({ setSocket }) => {
 
       socket.onmessage = (e: MessageEvent<string>) => {
         const data: WebsocketEvent = JSON.parse(e.data);
-        processTweet(data.message, true);
+        const tweetId = data.message;
+        if (tweetId.indexOf('_alxmth03') !== -1) {
+          processTweet(tweetId.slice(0, tweetId.indexOf('_alxmth03')), false);
+        } else {
+          processTweet(tweetId, true);
+        }
       };
 
       socket.onclose = () => {

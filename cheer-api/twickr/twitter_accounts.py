@@ -68,6 +68,7 @@ BY_SPORT = {
         "internetumpire",
         "bhawnakohli5",
         "gurkiratsgill",
+        "alxmth03",
     ],
     Sports.FOOTBALL.value: [],
     Sports.F1.value: [
@@ -180,6 +181,7 @@ BY_FOOTBALL_EVENT = {
         "vaibhardwaj",
         "Tactical_Times",
         "PremLeaguePanel",
+        "alxmth03",
     ],
     FootballEvents.INDIAN_SUPER_LEAGUE.value: [
         # "IndSuperLeague",
