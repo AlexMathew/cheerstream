@@ -48,7 +48,6 @@ BY_SPORT = {
         "im_sandipan",
         "cricvizanalyst",
         "OptaJeev",
-        "mroller98",
         "vikramsathaye",
         "CursedCricket__",
         "ImTanujSingh",
@@ -67,6 +66,8 @@ BY_SPORT = {
         "probatsman",
         "ovshake42",
         "internetumpire",
+        "bhawnakohli5",
+        "gurkiratsgill",
     ],
     Sports.FOOTBALL.value: [],
     Sports.F1.value: [
@@ -93,6 +94,7 @@ BY_SPORT = {
         "Harrison101HD",
         "BatteryVoltas",
         "Formula24hrs",
+        "PHortonF1",
     ],
     PLACEHOLDER_KEEP_ALIVE: [
         "JioCare",
