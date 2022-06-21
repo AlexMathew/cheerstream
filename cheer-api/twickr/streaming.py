@@ -135,9 +135,8 @@ def process_tweet(tweet: Dict[str, Any]):
                     group,
                     tweet_id,
                 )
-                tweet_message = f'{tweet_id}{"_alxmth03" if author.get("username", "") == "alxmth03" else ""}'
                 async_to_sync(CHANNEL_LAYER.group_send)(
-                    group, {"type": "event_message", "message": tweet_message}
+                    group, {"type": "event_message", "message": tweet_id}
                 )
                 redis_instance.set(
                     MOST_RECENT_TWEET_TIMESTAMP_KEY,
