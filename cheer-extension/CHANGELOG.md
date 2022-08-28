@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+- Add support for Asia Cup 2022
+
 ## 0.2.1
 
 - Set maximum tweets in state to display on sidebar
