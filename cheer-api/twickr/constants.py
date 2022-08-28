@@ -15,6 +15,7 @@ class CricketEvents(Enum):
     IPL_ORIGINAL = "indian-premier-league"
     T20_WC = "icc-mens-t20-world-cup"
     NZ_TOUR_OF_INDIA = "new-zealand-tour-of-india-202122"
+    ASIA_CUP = "asia-cup-2022"
 
 
 class FootballEvents(Enum):

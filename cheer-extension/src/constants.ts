@@ -14,6 +14,7 @@ export const EVENTS = {
   IPL: 'tata-ipl-2022',
   IPL_ORIGINAL: 'indian-premier-league',
   T20_WC: 'icc-mens-t20-world-cup',
+  ASIA_CUP: 'asia-cup-2022',
 };
 
 export const SUPPORTED_SPORTS = [SPORTS.FOOTBALL, SPORTS.F1];
@@ -22,6 +23,7 @@ export const SUPPORTED_EVENTS = [
   EVENTS.IPL,
   EVENTS.IPL_ORIGINAL,
   EVENTS.T20_WC,
+  EVENTS.ASIA_CUP,
 ];
 
 export const TWEETS_LOCAL_STORAGE_PREFIX = 'twickr_v2_tweets_';

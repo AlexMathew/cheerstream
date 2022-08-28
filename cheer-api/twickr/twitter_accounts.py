@@ -149,6 +149,7 @@ BY_CRICKET_EVENT = {
         # "mroller98",
     ],
     CricketEvents.NZ_TOUR_OF_INDIA.value: [],
+    CricketEvents.ASIA_CUP.value: [],
 }
 
 BY_FOOTBALL_EVENT = {

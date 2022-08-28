@@ -47,7 +47,7 @@ class TwitterSportClass(TwitterFactory):
 
 class CricketTwitter(BaseSportTwitter):
     TEAMS_REGEX = r"(?P<team1>[a-zA-Z-]+)-vs-(?P<team2>[a-zA-Z-]+)-"
-    DEFAULT_EVENT = CricketEvents.NZ_TOUR_OF_INDIA.value
+    DEFAULT_EVENT = CricketEvents.ASIA_CUP.value
 
     def __init__(self, sport: str, event: Optional[str] = None, **kwargs):
         super().__init__(sport, **kwargs)
