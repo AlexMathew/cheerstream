@@ -11,7 +11,7 @@ export type EventDetails = {
 };
 
 const LIVE_STREAM_URL_REGEX: RegExp =
-  /in\/sports\/(?<sport>\w+)\/?(?<event>tata-ipl-2022|indian-premier-league|asia-cup-2022)?\/(?<match>[\w-]+)(\/live-streaming)?\/\d+/i;
+  /in\/sports\/(?<sport>\w+)\/?(?<event>tata-ipl-2022|indian-premier-league|asia-cup-2022|mens-t20-asia-cup)?\/(?<match>[\w-]+)(\/live-streaming)?\/\d+/i;
 
 export function getEventAndMatchDetails(path: string): EventDetails {
   const match: RegExpExecArray | null = LIVE_STREAM_URL_REGEX.exec(path);

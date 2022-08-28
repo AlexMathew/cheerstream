@@ -150,6 +150,7 @@ BY_CRICKET_EVENT = {
     ],
     CricketEvents.NZ_TOUR_OF_INDIA.value: [],
     CricketEvents.ASIA_CUP.value: [],
+    CricketEvents.ASIA_CUP_ALT.value: [],
 }
 
 BY_FOOTBALL_EVENT = {

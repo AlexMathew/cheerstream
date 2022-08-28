@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3
+
+- Add alt Asia Cup event name
+
 ## 0.2.2
 
 - Add support for Asia Cup 2022
