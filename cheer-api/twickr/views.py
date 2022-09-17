@@ -68,8 +68,7 @@ class PromptHeroGumroadPingView(View):
         supabase: Client = create_client(url, key)
         table_name = "paid_users"
 
-        request_data = json.loads(request.body)
-        buyer_email = request_data.get("email", "")
+        buyer_email = request.POST["email"] if "email" in request.POST else ""
         if not buyer_email:
             return JsonResponse({"success": False})
 
