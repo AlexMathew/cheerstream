@@ -49,3 +49,36 @@ class MostRecentTweetView(View):
                 ).decode(),
             }
         )
+
+
+class PromptHeroGumroadPingView(View):
+    def post(self, request: HttpRequest, *args, **kwargs):
+        import json
+        import os
+
+        from supabase import Client, create_client
+
+        url = os.getenv("SUPABASE_API_URL") or ""
+        key = os.getenv("SUPABASE_API_KEY") or ""
+        supabase: Client = create_client(url, key)
+        table_name = "paid_users"
+
+        request_data = json.loads(request.body)
+        buyer_email = request_data.get("email", "")
+        if not buyer_email:
+            return JsonResponse({"success": False})
+
+        select_data = (
+            supabase.table(table_name).select("id").eq("email", buyer_email).execute()
+        )
+        if len(select_data.data) == 0:
+            supabase.table(table_name).insert(
+                {"email": buyer_email, "paying": True}
+            ).execute()
+        else:
+            user_id = select_data.data[0]["id"]
+            supabase.table(table_name).update({"paying": True}).match(
+                {"id": user_id}
+            ).execute()
+
+        return JsonResponse({"success": True})

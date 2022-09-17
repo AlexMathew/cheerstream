@@ -13,6 +13,7 @@ channels_redis = "^3.3.0"
 django-cors-headers = "^3.9.0"
 redis = "^3.5.3"
 django-s3-sqlite = "^0.0.4"
+supabase = "^0.5.8"
 
 [tool.poetry.dev-dependencies]
 ipython = "^7.28.0"

@@ -1,6 +1,11 @@
 from django.urls import path
 
-from .views import MostRecentTweetView, TwitterEmbedView, WebsocketView
+from .views import (
+    MostRecentTweetView,
+    PromptHeroGumroadPingView,
+    TwitterEmbedView,
+    WebsocketView,
+)
 
 urlpatterns = [
     path(
@@ -14,4 +19,9 @@ urlpatterns = [
         name="twitter-embed-view",
     ),
     path("recent/", MostRecentTweetView.as_view(), name="most-recent-tweet-view"),
+    path(
+        "prompthero-ping/",
+        PromptHeroGumroadPingView.as_view(),
+        name="prompthero-gumroad-ping",
+    ),
 ]
