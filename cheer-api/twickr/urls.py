@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
     MostRecentTweetView,
     PromptHeroGumroadPingView,
+    PromptHeroUserParametersView,
     TwitterEmbedView,
     WebsocketView,
 )
@@ -23,5 +24,10 @@ urlpatterns = [
         "prompthero-ping/",
         PromptHeroGumroadPingView.as_view(),
         name="prompthero-gumroad-ping",
+    ),
+    path(
+        "prompthero-get/",
+        PromptHeroUserParametersView.as_view(),
+        name="prompthero-get-parameters",
     ),
 ]

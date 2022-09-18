@@ -58,7 +58,6 @@ from django.views.decorators.csrf import csrf_exempt
 @method_decorator(csrf_exempt, name="dispatch")
 class PromptHeroGumroadPingView(View):
     def post(self, request: HttpRequest, *args, **kwargs):
-        import json
         import os
 
         from supabase import Client, create_client
@@ -86,3 +85,33 @@ class PromptHeroGumroadPingView(View):
             ).execute()
 
         return JsonResponse({"success": True})
+
+
+class PromptHeroUserParametersView(View):
+    def get(self, request: HttpRequest, *args, **kwargs):
+        import json
+        import os
+
+        from supabase import Client, create_client
+
+        from .prompthero import free, pro
+
+        url = os.getenv("SUPABASE_API_URL") or ""
+        key = os.getenv("SUPABASE_API_KEY") or ""
+        supabase: Client = create_client(url, key)
+        table_name = "paid_users"
+
+        email = request.GET["email"] if "email" in request.GET else ""
+        if not email:
+            return JsonResponse({"success": False})
+
+        select_data = (
+            supabase.table(table_name)
+            .select("id")
+            .match({"email": email, "paying": True})
+            .execute()
+        )
+        if len(select_data.data) > 0:
+            return JsonResponse({"paying": True, "parameters": pro.PARAMETERS})
+
+        return JsonResponse({"paying": False, "parameters": free.PARAMETERS})
