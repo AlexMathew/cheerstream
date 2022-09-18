@@ -103,7 +103,7 @@ class PromptHeroUserParametersView(View):
 
         email = request.GET["email"] if "email" in request.GET else ""
         if not email:
-            return JsonResponse({"success": False})
+            return JsonResponse({"paying": False, "parameters": free.PARAMETERS})
 
         select_data = (
             supabase.table(table_name)
