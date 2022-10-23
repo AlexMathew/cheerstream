@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.4
+
+- Add T20 WC to event list again
+
 ## 0.2.3
 
 - Add alt Asia Cup event name
